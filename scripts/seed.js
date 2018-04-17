@@ -5,11 +5,11 @@ const {db, User} = require('../server/db')
 const seed = async () => {
   await db.sync({force: true})
   console.log('db synced!')
-
   const users = await Promise.all([
     User.create({email: 'cody@email.com', password: '123'}),
     User.create({email: 'grace@hopper.com', password: '123'})
   ])
+
   console.log(`seeded ${users.length} users`)
   console.log('email: ', users[0].email, ' password: 123')
   console.log('email: ', users[1].email, ' password: 123')

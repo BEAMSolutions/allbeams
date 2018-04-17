@@ -6,14 +6,14 @@ const Review = db.define('review', {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      len: [10]
+      len: { args: 10, msg: 'Name must be at-least 10 characters in length' }
     }
   },
   body: {
     type: Sequelize.TEXT,
     allowNull: false,
     validate: {
-      len: [20]
+      len: { args: 20, msg: 'Review must be at-least 20 characters in length' }
     }
   },
   rating: {
