@@ -1,5 +1,5 @@
 module.exports = {
-	"prettier.eslintIntegration": true,
-	"prettier.semi": false,
-	"prettier.singleQuote": true
+	"eslintIntegration": true,
+	"semi": false,
+	"singleQuote": true
 }
