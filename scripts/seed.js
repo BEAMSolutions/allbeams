@@ -1,27 +1,38 @@
 #!/usr/bin/env node
 
-const { db, User, Product, Category } = require('../server/db')
+const { db, User, Product, Category, Order, Review} = require('../server/db')
+const data = require('./seedFile')
+
 
 const seed = async () => {
   await db.sync({ force: true })
   console.log('db synced!')
+  await data.userArray.map((user) => {User.create(user)})
+  await data.productArray.map((product) => {Product.create(product)})
+  await data.orderArray.map((order) => {Order.create(order)})
+  await data.categoryArray.map((category) => {Category.create(category)})
+  await data.reviewArray.map((review) => {Review.create(review)})
+  console.log('after review')
   const users = await Promise.all([
-    User.create({ email: 'cody@email.com', password: '123' }),
-    User.create({ email: 'grace@hopper.com', password: '123' })
+    User.create({ id: 101, email: 'cody@email.com', password: '123' }),
+    User.create({ id: 102, email: 'grace@hopper.com', password: '123' }),
   ])
+  console.log('after seed')
+
+
   const categories = await Promise.all([
     Category.create({
-      id: 1,
+      id: 23,
       name: 'Beam-Type1'
     }),
     Category.create({
-      id: 2,
+      id: 24,
       name: 'Beam-Type2'
     })
   ])
   const products = await Promise.all([
     Product.create({
-      id: 1,
+      id: 101,
       name: 'Beam1',
       price: 2000,
       description: 'longtext',
@@ -30,7 +41,7 @@ const seed = async () => {
         'https://www.cornerstone-hw.com/wp-content/uploads/2018/02/example-1prdct1.png'
     }),
     Product.create({
-      id: 2,
+      id: 102,
       name: 'Beam2',
       price: 299,
       description: 'longtext',
@@ -39,7 +50,7 @@ const seed = async () => {
         'https://www.cornerstone-hw.com/wp-content/uploads/2018/02/example-1prdct1.png'
     }),
     Product.create({
-      id: 3,
+      id: 103,
       name: 'Beam3',
       price: 2998,
       description: 'longtext',
@@ -48,7 +59,7 @@ const seed = async () => {
         'https://www.cornerstone-hw.com/wp-content/uploads/2018/02/example-1prdct1.png'
     }),
     Product.create({
-      id: 4,
+      id: 104,
       name: 'Beam4',
       price: 2931,
       description: 'longtext',
@@ -57,7 +68,7 @@ const seed = async () => {
         'https://www.cornerstone-hw.com/wp-content/uploads/2018/02/example-1prdct1.png'
     }),
     Product.create({
-      id: 5,
+      id: 105,
       name: 'Beam5',
       price: 2777,
       description: 'longtext',

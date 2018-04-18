@@ -11,15 +11,15 @@ const ProductOrder = db.define('productOrders', {
 })
 const ProductCategory = db.define('productCategories', {})
 // associations go here!
-Order.belongsTo(User)
-Product.hasMany(Review)
-Review.belongsTo(User)
+Order.belongsTo(User, {constraints: false})
+Product.hasMany(Review, {constraints: false})
+Review.belongsTo(User, {constraints: false})
 
-Order.belongsToMany(Product, { through: ProductOrder })
-Product.belongsToMany(Order, { through: ProductOrder })
+Order.belongsToMany(Product, { through: ProductOrder, constraints: false })
+Product.belongsToMany(Order, { through: ProductOrder, constraints: false })
 
-Category.belongsToMany(Product, {through: ProductCategory})
-Product.belongsToMany(Category, {through: ProductCategory})
+Category.belongsToMany(Product, {through: ProductCategory, constraints: false})
+Product.belongsToMany(Category, {through: ProductCategory, constraints: false})
 
 module.exports = {
   db,
