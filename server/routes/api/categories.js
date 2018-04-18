@@ -11,6 +11,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+//TODO fix later
 router.get('/:categoryId', async (req, res, next) => {
   try {
     const categories = await ProductCategory.findAll({
