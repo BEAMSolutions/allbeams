@@ -19,3 +19,5 @@ router.get('/:productId', async (req, res, next) => {
     next(error)
   }
 })
+//eager loading
+//what if there is no product. what do we send back? new res.json if there is no product found?

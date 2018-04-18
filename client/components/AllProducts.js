@@ -1,22 +1,18 @@
 import React from 'react'
 import ProductItem from './ProductItem'
 import { connect } from 'react-redux'
-import { getAllProducts } from '../store'
+import { getAllProducts } from '../store' //import from product file later
 
 const mapStateToProps = state => {
   console.log('mapping state to props', state)
-  return { products: state.product.products }
+  return { products: state.products }
 }
 const mapDispatchToProps = (dispatch) => {
   return { getAllProducts: () => dispatch(getAllProducts()) }
 }
 
 class AllProducts extends React.Component {
-  constructor() {
-    super()
-  }
   componentDidMount(){
-    console.log(getAllProducts)
     this.props.getAllProducts()
   }
   render() {
