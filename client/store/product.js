@@ -1,24 +1,37 @@
 //action types
 const GET_PRODUCTS = 'GET_PRODUCTS'
+const GET_PRODUCT = 'GET_PRODUCT'
 //initial state
-const initialState = {
-  products: []
+const initialProducts = {
+  products: [],
+  product: {}
 }
 //action creators
-export const getProducts = products => ({ type: GET_PRODUCTS, products })
+const getProducts = products => ({ type: GET_PRODUCTS, products })
+const getProduct = product => ({ type: GET_PRODUCT, product })
 //thunk creators
 export const getAllProducts = () => {
-  return async (dispatch, _, {axios}) => {
+  return async (dispatch, _, { axios }) => {
     const { data } = await axios.get('api/products/')
     dispatch(getProducts(data))
   }
 }
+export const getSingleProduct = (productId) => {
+  return async (dispatch, _, { axios }) => {
+    // console.log(productId)
+    const { data } = await axios.get(`api/products/${productId}`)
+    dispatch(getProduct(data))
+  }
+}
+
 //reducer
-export default (state = initialState, action) => {
+export default (products = initialProducts, action) => {
   switch (action.type) {
     case GET_PRODUCTS:
-      return { ...state, products: action.products }
+      return [...products.products, ...action.products]
+    case GET_PRODUCT:
+      return {...products, product: action.product}
     default:
-      return { ...state }
+      return products
   }
 }

@@ -5,7 +5,7 @@ import { getAllProducts } from '../store'
 
 const mapStateToProps = state => {
   console.log('mapping state to props', state)
-  return { products: state.product.products }
+  return { products: state.products }
 }
 const mapDispatchToProps = (dispatch) => {
   return { getAllProducts: () => dispatch(getAllProducts()) }
