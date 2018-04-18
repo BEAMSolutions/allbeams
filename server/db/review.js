@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('./database')
 
-const Review = db.define('review', {
+const Review = db.define('reviews', {
   title: {
     type: Sequelize.STRING,
     allowNull: false,

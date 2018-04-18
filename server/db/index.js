@@ -6,18 +6,20 @@ const Review = require('./review')
 const Category = require('./category')
 const Sequelize = require('sequelize')
 
-const ProductOrder = db.define('productOrder', {
+const ProductOrder = db.define('productOrders', {
   currentPrice: Sequelize.INTEGER
 })
-const ProductCategory = db.define('productCategory', {})
+const ProductCategory = db.define('productCategories', {})
 // associations go here!
-Order.belongsToMany(Product, { through: ProductOrder })
-Product.belongsToMany(Order, { through: ProductOrder })
 Order.belongsTo(User)
 Product.hasMany(Review)
+Review.belongsTo(User)
+
+Order.belongsToMany(Product, { through: ProductOrder })
+Product.belongsToMany(Order, { through: ProductOrder })
+
 Category.belongsToMany(Product, {through: ProductCategory})
 Product.belongsToMany(Category, {through: ProductCategory})
-Review.belongsTo(User)
 
 module.exports = {
   db,

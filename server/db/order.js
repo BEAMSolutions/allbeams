@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('./database')
 
-const Order = db.define('order', {
+const Order = db.define('orders', {
   address: {
     type: Sequelize.STRING,
     allowNull: false
