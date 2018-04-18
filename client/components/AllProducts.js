@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductItem from './ProductItem'
 import { connect } from 'react-redux'
-import { getAllProducts } from '../store' //import from product file later
+import { getAllProducts } from '../store/product' //import from product file later
 
 const mapStateToProps = state => {
   console.log('mapping state to props', state)
@@ -16,7 +16,7 @@ class AllProducts extends React.Component {
     this.props.getAllProducts()
   }
   render() {
-    const products = this.props.products
+    const products = this.props.products.products
     return (
       <div className="all-products container-fluid">
         <h3>All Products</h3>

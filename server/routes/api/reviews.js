@@ -13,15 +13,6 @@ router.get('/:productId', async (req, res, next) => {
   }
 })
 
-// router.get('/', async (req, res, next) => {
-//   try {
-//     const review = await Review.findById(req.params.Id)
-//     res.json(review)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
-
 router.post('/:productId', (req, res, next) => {
   //TODO this is going to be used to actually write the review
   try {

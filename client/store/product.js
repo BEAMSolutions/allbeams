@@ -2,7 +2,7 @@
 const GET_PRODUCTS = 'GET_PRODUCTS'
 const GET_PRODUCT = 'GET_PRODUCT'
 //initial state
-const initialProducts = {
+const initialState = {
   products: [],
   product: {}
 }
@@ -20,7 +20,7 @@ export const getAllProducts = () => {
     }
   }
 }
-export const getSingleProduct = (productId) => {
+export const getSingleProduct = productId => {
   return async (dispatch, _, { axios }) => {
     // console.log(productId)
     const { data } = await axios.get(`api/products/${productId}`)
@@ -29,13 +29,13 @@ export const getSingleProduct = (productId) => {
 }
 
 //reducer
-export default (products = initialProducts, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case GET_PRODUCTS:
-      return [...products.products, ...action.products]
+      return { ...state, products: [...action.products] }
     case GET_PRODUCT:
-      return {...products, product: action.product}
+      return { ...state, product: action.product }
     default:
-      return products
+      return state
   }
 }

@@ -1,23 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getSingleProduct } from '../store/product'
+import { review } from './review'
+import { getAllReviews } from '../store/review'
 
 const mapStateToProps = state => {
-  return { product: state.product }
+  console.log('mapping stateToProps', state)
+  return { product: state.products.product, reviews: state.reviews }
 }
 const mapDispatchToProps = dispatch => {
-  return { getSingleProduct: (arg) => dispatch(getSingleProduct(arg)) }
+  return {
+    getSingleProduct: arg => dispatch(getSingleProduct(arg)),
+    getAllReviews: arg => dispatch(getAllReviews(arg))
+  }
 }
 
 class SingleProduct extends React.Component {
   componentDidMount() {
-    // const id = Number(this.props.match.params.productId)
+    const id = this.props.match.params.productId
     // console.log(this.props.match.params.productId)
-    this.props.getSingleProduct(this.props.match.params.productId)
+    this.props.getSingleProduct(id)
+    this.props.getAllReviews(id)
   }
   render() {
     const product = this.props.product
-    console.log(product)
+    const reviews = this.props.reviews
+    console.log(reviews)
     return (
       <div>
         <div className="horizontal-flex" id="single-item">
@@ -51,6 +59,7 @@ class SingleProduct extends React.Component {
             <a href="#">Write a review</a>
           </p>
           <div id="reviews-list" />
+          <div />
         </div>
       </div>
     )
@@ -58,12 +67,3 @@ class SingleProduct extends React.Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)
-
-// {/* <div className="review">
-//               <div className="horizontal-flex review-title">
-//                 <p>Title</p>
-//                 <div>Rating Stars</div>
-//                 <p>User</p>
-//               </div>
-//               <p>Review text</p>
-// </div> */}
