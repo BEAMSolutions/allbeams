@@ -1,23 +1,38 @@
 #!/usr/bin/env node
 
-const { db, User, Product, Category, Order, Review} = require('../server/db')
+const { db, User, Product, Category, Order, Review, ProductCategory, ProductOrder} = require('../server/db')
 const data = require('./seedFile')
 
 
 const seed = async () => {
   await db.sync({ force: true })
   console.log('db synced!')
-  await data.userArray.map((user) => {User.create(user)})
-  await data.productArray.map((product) => {Product.create(product)})
-  await data.orderArray.map((order) => {Order.create(order)})
-  await data.categoryArray.map((category) => {Category.create(category)})
-  await data.reviewArray.map((review) => {Review.create(review)})
-  console.log('after review')
+  await data.userArray.map((user) => {
+    User.create(user)
+  })
+  await data.productArray.map((product) => {
+    Product.create(product)
+  })
+  await data.orderArray.map((order) => {
+    Order.create(order)
+  })
+  await data.categoryArray.map((category) => {
+    Category.create(category)
+  })
+  await data.reviewArray.map((review) => {
+    Review.create(review)
+  })
+  await data.productCategoriesArray.map((productCategories) => {
+    ProductCategory.create(productCategories)
+  })
+  await data.productOrdersArray.map((productOrders) => {
+    ProductOrder.create(productOrders)
+  })
+
   const users = await Promise.all([
     User.create({ id: 101, email: 'cody@email.com', password: '123' }),
     User.create({ id: 102, email: 'grace@hopper.com', password: '123' }),
   ])
-  console.log('after seed')
 
 
   const categories = await Promise.all([
