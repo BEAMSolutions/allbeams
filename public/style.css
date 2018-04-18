@@ -44,6 +44,22 @@ h5 {
   height: auto;
 }
 
+/* Single product detail */
+.horizontal-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+#single-item {
+  margin: 1rem;
+  padding: 1rem;
+  justify-content: space-around;
+}
+
+#item-info {
+  margin-left: 1rem;
+}
+
 /* Back to Top Section */
 #back-to-top {
   text-align: center;
@@ -52,12 +68,16 @@ h5 {
   margin-bottom: 0.5rem;
 }
 
+.review {
+  background-color: lightgray;
+}
+
 /* Footer */
 footer {
   display: flex;
   justify-content: space-between;
   background-color: steelblue;
-  padding: 3rem;
+  padding: 1rem;
 }
 
 footer .legal {
