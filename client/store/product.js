@@ -6,14 +6,18 @@ const initialProducts = {
   products: [],
   product: {}
 }
-//action creators
+
 const getProducts = products => ({ type: GET_PRODUCTS, products })
 const getProduct = product => ({ type: GET_PRODUCT, product })
 //thunk creators
 export const getAllProducts = () => {
   return async (dispatch, _, { axios }) => {
-    const { data } = await axios.get('api/products/')
-    dispatch(getProducts(data))
+    try {
+      const { data } = await axios.get('api/products/')
+      dispatch(getProducts(data))
+    } catch (error) {
+      console.error(error)
+    }
   }
 }
 export const getSingleProduct = (productId) => {
