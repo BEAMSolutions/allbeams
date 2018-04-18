@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getSingleProduct } from '../store/product'
-import { review } from './review'
+import Review from './review'
 import { getAllReviews } from '../store/review'
 
 const mapStateToProps = state => {
@@ -25,7 +25,6 @@ class SingleProduct extends React.Component {
   render() {
     const product = this.props.product
     const reviews = this.props.reviews
-    console.log(reviews)
     return (
       <div>
         <div className="horizontal-flex" id="single-item">
@@ -52,18 +51,23 @@ class SingleProduct extends React.Component {
             <p>{product.description}</p>
           </div>
         </div>
-
         <div className="reviews-container">
           <h4>Reviews for this product</h4>
           <p>
             <a href="#">Write a review</a>
           </p>
           <div id="reviews-list" />
+          {reviews.map(review => {
+            console.log('hello')
+            return <Review review={review} key={review.id} />
+          })}
           <div />
         </div>
       </div>
     )
   }
 }
-
+//I feel like I remember one of the instructors mentioning how using review.id is not best practice for assigning a key to a mapped component.
+//I want to make it so that if the array is empty(aka no reviews for a product), then it would render a message that says "there are no reviews, be the first to review!"
+//If the array is empty, the reviews.map won't event run
 export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)
