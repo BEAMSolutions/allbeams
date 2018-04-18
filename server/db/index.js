@@ -9,13 +9,14 @@ const Sequelize = require('sequelize')
 const ProductOrder = db.define('ProductOrder', {
   currentPrice: Sequelize.INTEGER
 })
-
+const ProductCategory = db.define('ProductCategory', {})
 // associations go here!
 Order.belongsToMany(Product, { through: ProductOrder })
 Product.belongsToMany(Order, { through: ProductOrder })
 Order.belongsTo(User)
 Product.hasMany(Review)
-Product.belongsTo(Category)
+Category.belongsToMany(Product, {through: ProductCategory})
+Product.belongsToMany(Category, {through: ProductCategory})
 Review.belongsTo(User)
 
 module.exports = {
@@ -23,5 +24,7 @@ module.exports = {
   User,
   Product,
   Order,
-  Review
+  Review,
+  ProductOrder,
+  ProductCategory
 }

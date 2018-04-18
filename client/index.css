@@ -1,8 +1,14 @@
+/* App */
+
 #app {
   height: 100%;
   width: 100%;
   margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
 }
+
+/* Navbar */
 
 nav {
   height: 80px;
@@ -34,4 +40,47 @@ nav a:first-child:hover {
   height: 40px;
   width: 40px;
   border-radius: 50%;
+}
+
+/* Welcome Section */
+
+.product-item {
+  width: 20%;
+  margin: 1rem;
+}
+
+.product-item img {
+  width: 100%;
+}
+
+.all-products-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Banner */
+
+.container img {
+  width: 100%;
+  height: auto;
+}
+
+/* Back to Top */
+#back-to-top {
+  padding: 1rem;
+  background-color: slategrey;
+}
+
+/* Footer */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: steelblue;
+  padding: 5rem;
+}
+
+#back-to-top {
+  text-align: center;
+  width: 100%;
 }

@@ -1,3 +1,9 @@
 day - 1
+benito/alona
+eugene/matt
+day -2
 benito/matt
-alona/eugene
+eugene/alona
+day -3
+alona/matt
+beinto/eugene

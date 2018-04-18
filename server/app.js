@@ -6,6 +6,7 @@ module.exports = app
 // all of our boilerplate middleware
 app.use(require('./middleware'))
 
+
 // all of our "auth" and "api" routes
 app.use(require('./routes'))
 

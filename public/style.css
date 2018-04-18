@@ -1,0 +1,65 @@
+/* HTML */
+html {
+  font-size: 16px;
+  font: Verdana;
+  padding: 1.5rem;
+  align-content: center;
+}
+/* Font Sizes */
+h1 {
+  font-size: 2.5rem;
+}
+h3 {
+  font-size: 2rem;
+}
+h5 {
+  font-size: 1.75rem;
+}
+
+/* Banner */
+.banner {
+  width: 100vw;
+}
+.container {
+  width: 100vw;
+}
+.container img {
+  width: 100%;
+  height: auto;
+}
+/* All Products Section */
+.all-products {
+  width: 100vw;
+}
+.all-products-items {
+  width: 100vw;
+}
+.product-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#img-container img {
+  width: 100%;
+  height: auto;
+}
+
+/* Back to Top Section */
+#back-to-top {
+  text-align: center;
+  background-color: lightgray;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: steelblue;
+  padding: 3rem;
+}
+
+footer .legal {
+  text-align: center;
+}
