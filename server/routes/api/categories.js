@@ -11,13 +11,11 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:categoryId', async (req, res, next) => {
+router.get('/:categoryId/products', async (req, res, next) => {
   try {
-    const categories = await ProductCategory.findAll({
-      where: { categoryId: req.params.categoryId },
-      include: [{ model: Category }, { model: Product }]
-    })
-    res.json(categories)
+    const category = await Category.findById(req.params.categoryId)
+    const products = await category.getProducts()
+    res.json(products)
   } catch (error) {
     next(error)
   }
