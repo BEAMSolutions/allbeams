@@ -69,5 +69,5 @@ class SingleProduct extends React.Component {
 }
 //I feel like I remember one of the instructors mentioning how using review.id is not best practice for assigning a key to a mapped component.
 //I want to make it so that if the array is empty(aka no reviews for a product), then it would render a message that says "there are no reviews, be the first to review!"
-//If the array is empty, the reviews.map won't event run
+//If the array is empty, the reviews.map won't event run, so this console log 'hello' doesn't show
 export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)
