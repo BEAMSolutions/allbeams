@@ -4,9 +4,10 @@ import thunks from 'redux-thunk'
 import axios from 'axios'
 import history from '../history'
 import user from './user'
-import products from './product'
+import product from './product'
+import products from './products'
 import reviews from './review'
-const reducer = combineReducers({user, products, reviews})
+const reducer = combineReducers({user, products, reviews, product})
 
 const store = createStore(
   reducer,

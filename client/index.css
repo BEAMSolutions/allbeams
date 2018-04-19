@@ -102,11 +102,11 @@ nav a:first-child:hover {
 
 /* Footer */
 
-footer {
+.footer {
   display: flex;
   justify-content: space-between;
   background-color: steelblue;
-  padding: 5rem;
+  padding: 1rem;
 }
 
 #back-to-top {

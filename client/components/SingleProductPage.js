@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import { getSingleProduct } from '../store/product'
 import Review from './review'
 import { getAllReviews } from '../store/review'
+import Footer from './footer'
 
 const mapStateToProps = state => {
   console.log('mapping stateToProps', state)
-  return { product: state.products.product, reviews: state.reviews }
+  return { product: state.product, reviews: state.reviews }
 }
 const mapDispatchToProps = dispatch => {
   return {
@@ -63,6 +64,7 @@ class SingleProduct extends React.Component {
           })}
           <div />
         </div>
+        <Footer />
       </div>
     )
   }
