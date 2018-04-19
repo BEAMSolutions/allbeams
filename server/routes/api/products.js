@@ -25,15 +25,3 @@ router.get('/:productId', async (req, res, next) => {
   }
 })
 
-<<<<<<< HEAD
-=======
-router.get('/category/:categoryId', async (req, res, next) => {
-  try {
-    const category = await Category.findById(req.params.categoryId)
-    const products = await category.getProducts()
-    res.json(products)
-  } catch (err) {
-    next(err)
-  }
-})
->>>>>>> 8cc284584502288a8be4b50dc4ffaa50c8d78e5b
