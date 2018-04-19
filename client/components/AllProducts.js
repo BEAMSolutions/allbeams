@@ -32,12 +32,16 @@ class AllProducts extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target)
+    let categories = this.props.categories
     this.setState({
       category: event.target.value
     })
     //loop over this.state.categories
-    this.props.getCategoryProducts()
+    for (let i = 0; i < categories.length; i++) {
+      if (categories[i].name === event.target.value) {
+        this.props.getCategoryProducts(categories[i].id)
+      }
+    }
   }
   render() {
     const products = this.props.products.products // TODO: fix this

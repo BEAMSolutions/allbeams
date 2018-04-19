@@ -27,7 +27,7 @@ const Product = db.define('products', {
   },
   imageUrl: {
     type: Sequelize.STRING,
-    defaultValue: './dummyurl.jpg'
+    defaultValue: 'http://localhost:8080/product_placeholder.png'
   }
 })
 
