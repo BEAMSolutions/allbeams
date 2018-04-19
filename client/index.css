@@ -68,7 +68,6 @@ nav a:first-child:hover {
   height: auto;
 }
 
-<<<<<<< HEAD
 /* Product title bar */
 .product-title-bar {
   display: flex;
@@ -87,7 +86,6 @@ nav a:first-child:hover {
   align-items: center;
 }
 
-=======
 /* Single product detail */
 .horizontal-flex {
   display: flex;
@@ -117,7 +115,6 @@ nav a:first-child:hover {
 }
 
 
->>>>>>> master
 /* Back to Top */
 #back-to-top {
   padding: 1rem 0;
