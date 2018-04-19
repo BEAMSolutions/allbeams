@@ -4,7 +4,7 @@ import thunks from 'redux-thunk'
 import axios from 'axios'
 import history from '../history'
 import user from './user'
-import products from './product'
+import products from './products'
 import categories from './categories'
 
 const reducer = combineReducers({ user, products, categories })
@@ -13,7 +13,7 @@ const store = createStore(
   reducer,
   applyMiddleware(thunks.withExtraArgument({ axios, history }), logger)
 )
-
+ 
 export default store
 export * from './user'
-export * from './product'
+export * from './products'

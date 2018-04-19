@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductItem from './ProductItem'
 import { connect } from 'react-redux'
-import { getAllProducts, getCategoryProducts } from '../store/product'
+import { getAllProducts, getCategoryProducts } from '../store/products'
 import { getCategories } from '../store/categories'
 import SelectCategoryForm from './SelectCategoryForm'
 
