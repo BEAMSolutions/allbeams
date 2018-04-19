@@ -6,7 +6,6 @@ const Main = () => {
   return (
     <div id="main" className="fill-xy column">
       <Navbar />
-
       <Routes />
     </div>
   )
