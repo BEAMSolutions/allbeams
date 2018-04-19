@@ -18,10 +18,20 @@ const mapDispatchToProps = dispatch => {
 class AllProducts extends React.Component {
   constructor() {
     super()
+    this.state = {
+      category: 'All Products'
+    }
+    this.handleChange = this.handleChange.bind(this)
   }
   componentDidMount() {
     this.props.getAllProducts()
     this.props.getCategories()
+  }
+
+  handleChange(event) {
+    this.setState({
+      category: event.target.value
+    })
   }
   render() {
     const products = this.props.products.products
@@ -29,15 +39,27 @@ class AllProducts extends React.Component {
     return (
       <div className="all-products container-fluid">
         <div className="product-title-bar">
-          <SelectCategoryForm categories={categories} />
+          <SelectCategoryForm
+            categories={categories}
+            handleChange={this.handleChange}
+            // {...this.state}
+          />
         </div>
-
-        <h3>All Products</h3>
-        <div className="all-products-items container-fluid">
-          {products.map(product => (
-            <ProductItem product={product} key={product.id} />
-          ))}
-        </div>
+        {this.state.category === 'All Products' ? (
+          <div>
+            <h3>All Products</h3>
+            <div className="all-products-items container-fluid">
+              {products.map(product => (
+                <ProductItem product={product} key={product.id} />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div>
+            <h3>{this.state.category}</h3>
+            <div>Products under this category</div>
+          </div>
+        )}
       </div>
     )
   }
