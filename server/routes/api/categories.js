@@ -10,13 +10,3 @@ router.get('/', async (req, res, next) => {
     next(error)
   }
 })
-
-router.get('/products', async (req, res, next) => {
-  try {
-    const category = await Category.findById(req.params.categoryId)
-    const products = await category.getProducts()
-    res.json(products)
-  } catch (error) {
-    next(error)
-  }
-})
