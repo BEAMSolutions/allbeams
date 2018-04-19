@@ -33,8 +33,9 @@ class AllProducts extends React.Component {
     this.props.getCategoryProducts(event.target.value)
   }
   render() {
-    const products = this.props.products.products
+    const products = this.props.products
     const categories = this.props.categories
+    console.log(this.props)
     return (
       <div className="all-products container-fluid">
         <div className="product-title-bar">

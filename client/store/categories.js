@@ -13,7 +13,7 @@ const gotCategories = categories => ({
 export const getCategories = () => {
   return async (dispatch, _, { axios }) => {
     try {
-      const { data } = await axios.get('api/categories/')
+      const { data } = await axios.get('/api/categories/')
       dispatch(gotCategories(data))
     } catch (err) {
       console.error(err)
