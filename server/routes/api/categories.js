@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { ProductCategory, Category } = require('../../db')
+const { ProductCategory, Category, Product } = require('../../db')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -10,6 +10,8 @@ router.get('/', async (req, res, next) => {
     next(error)
   }
 })
+<<<<<<< HEAD
+=======
 
 //TODO fix later
 router.get('/:categoryId', async (req, res, next) => {
@@ -22,3 +24,4 @@ router.get('/:categoryId', async (req, res, next) => {
     next(error)
   }
 })
+>>>>>>> master

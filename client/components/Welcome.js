@@ -3,6 +3,7 @@ import AllProducts from './AllProducts'
 import Footer from './Footer'
 import { Link } from 'react-router-dom'
 import Banner from './Banner'
+import BackToTop from './BackToTop'
 
 // Welcome: a landing page for unauthenticated users
 const Welcome = () => {
@@ -13,7 +14,7 @@ const Welcome = () => {
       {/* <!-- All Products Section --> */}
       <AllProducts />
       {/* <!-- Back to Top Section --> */}
-      <h3 id="back-to-top">Back to Top</h3>
+      {<BackToTop />}
       {/* <!-- Footer --> */}
       <Footer />
     </div>

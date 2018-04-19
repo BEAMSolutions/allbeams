@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Product } = require('../../db')
+const { Product, Category } = require('../../db')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -25,3 +25,15 @@ router.get('/:productId', async (req, res, next) => {
   }
 })
 
+<<<<<<< HEAD
+router.get('/category/:categoryId', async (req, res, next) => {
+  try {
+    const category = await Category.findById(req.params.categoryId)
+    const products = await category.getProducts()
+    res.json(products)
+  } catch (err) {
+    next(err)
+  }
+})
+=======
+>>>>>>> master
