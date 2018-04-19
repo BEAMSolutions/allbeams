@@ -13,11 +13,15 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:productId', async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.productId)
-    res.json(product)
+    const product = await Product.findAll({where: {id: req.params.productId}, include: {all: true}})
+    if (product) {
+      //we are returning product[0] so that we only get a single object, instead of an array
+      res.json(product[0])
+    } else {
+      res.status(404)
+    }
   } catch (error) {
     next(error)
   }
 })
-//eager loading
-//what if there is no product. what do we send back? new res.json if there is no product found?
+

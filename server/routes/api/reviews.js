@@ -1,26 +1,20 @@
 const router = require('express').Router()
-const { Review } = require('../../db')
+const { Review, User } = require('../../db')
 module.exports = router
 
 router.get('/:productId', async (req, res, next) => {
   try {
     const reviews = await Review.findAll({
-      where: { id: req.params.productId }
+      where: { productId: req.params.productId },
+      include: [
+        {model: User}
+      ]
     })
     res.json(reviews)
   } catch (error) {
     next(error)
   }
 })
-
-// router.get('/', async (req, res, next) => {
-//   try {
-//     const review = await Review.findById(req.params.Id)
-//     res.json(review)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
 
 router.post('/:productId', (req, res, next) => {
   //TODO this is going to be used to actually write the review
