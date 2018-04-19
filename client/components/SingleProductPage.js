@@ -5,6 +5,7 @@ import Review from './review'
 import { getAllReviews } from '../store/review'
 import Footer from './footer'
 
+
 const mapStateToProps = state => {
   console.log('mapping stateToProps', state)
   return { product: state.product, reviews: state.reviews }
@@ -19,7 +20,6 @@ const mapDispatchToProps = dispatch => {
 class SingleProduct extends React.Component {
   componentDidMount() {
     const id = this.props.match.params.productId
-    // console.log(this.props.match.params.productId)
     this.props.getSingleProduct(id)
     this.props.getAllReviews(id)
   }
@@ -58,10 +58,9 @@ class SingleProduct extends React.Component {
             <a href="#">Write a review</a>
           </p>
           <div id="reviews-list" />
-          {reviews.map(review => {
-            console.log('hello')
-            return <Review review={review} key={review.id} />
-          })}
+          {reviews.length ? (reviews.map(review => {
+            return <Review review={review} key={review.id} user={review.userId} />
+          })) : <h3>There are no reviews yet, be the first!</h3>}
           <div />
         </div>
         <Footer />
@@ -69,7 +68,6 @@ class SingleProduct extends React.Component {
     )
   }
 }
-//I feel like I remember one of the instructors mentioning how using review.id is not best practice for assigning a key to a mapped component.
 //I want to make it so that if the array is empty(aka no reviews for a product), then it would render a message that says "there are no reviews, be the first to review!"
 //If the array is empty, the reviews.map won't event run, so this console log 'hello' doesn't show
 export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)
