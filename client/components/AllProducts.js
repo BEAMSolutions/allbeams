@@ -29,5 +29,5 @@ class AllProducts extends React.Component {
     )
   }
 }
-
+''
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)
