@@ -8,7 +8,6 @@ import Footer from './footer'
 
 
 const mapStateToProps = state => {
-  console.log('mapping stateToProps', state)
   return {
     product: state.product,
     reviews: state.reviews,

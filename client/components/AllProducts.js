@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { getAllProducts } from '../store/products' //import from product file later
 
 const mapStateToProps = state => {
-  console.log('mapping state to props', state)
   return { products: state.products }
 }
 const mapDispatchToProps = dispatch => {
@@ -29,5 +28,4 @@ class AllProducts extends React.Component {
     )
   }
 }
-''
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)
