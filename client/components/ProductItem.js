@@ -1,9 +1,9 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 const ProductItem = props => {
   const product = props.product
   return (
-    <div className="product-item col-md-3">
+    <Link to={`${product.id}`} className="product-item col-md-3">
       <div id="img-container">
         <img src={product.imageUrl} alt="" />
       </div>
@@ -14,7 +14,7 @@ const ProductItem = props => {
         <p>${product.price}</p>
         <p>{product.rating}</p>
       </div>
-    </div>
+    </Link>
   )
 }
 
