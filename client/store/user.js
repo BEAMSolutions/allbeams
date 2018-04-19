@@ -44,7 +44,6 @@ export const logout = () =>
       })
       .catch(err => console.log(err))
 
-
 /**
  * REDUCER
  */

@@ -25,7 +25,6 @@ router.get('/:productId', async (req, res, next) => {
   }
 })
 
-<<<<<<< HEAD
 router.get('/category/:categoryId', async (req, res, next) => {
   try {
     const category = await Category.findById(req.params.categoryId)
@@ -35,5 +34,3 @@ router.get('/category/:categoryId', async (req, res, next) => {
     next(err)
   }
 })
-=======
->>>>>>> master
