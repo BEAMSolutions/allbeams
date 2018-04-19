@@ -4,14 +4,16 @@ import { connect } from 'react-redux'
 import { getAllProducts } from '../store/product'
 import { getCategories } from '../store/categories'
 import SelectCategoryForm from './SelectCategoryForm'
+import { getCategoryProducts } from '../store/categoryProducts'
 
 const mapStateToProps = state => {
-  return { products: state.products, categories: state.categories }
+  return { products: state.products, categories: state.categories, categoryProducts: state.categoryProducts}
 }
 const mapDispatchToProps = dispatch => {
   return {
     getAllProducts: () => dispatch(getAllProducts()),
-    getCategories: () => dispatch(getCategories())
+    getCategories: () => dispatch(getCategories()),
+    getCategoryProducts: (categoryId) => dispatch(getCategoryProducts(categoryId))
   }
 }
 
@@ -26,12 +28,16 @@ class AllProducts extends React.Component {
   componentDidMount() {
     this.props.getAllProducts()
     this.props.getCategories()
+    // this.props.getCategoryProducts()
   }
 
   handleChange(event) {
+    console.log(event.target)
     this.setState({
       category: event.target.value
     })
+    //loop over this.state.categories
+    this.props.getCategoryProducts()
   }
   render() {
     const products = this.props.products.products // TODO: fix this
