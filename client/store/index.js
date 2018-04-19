@@ -1,19 +1,17 @@
-import {createStore, applyMiddleware, combineReducers} from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import logger from 'redux-logger'
 import thunks from 'redux-thunk'
 import axios from 'axios'
 import history from '../history'
 import user from './user'
-import product from './product'
+import products from './product'
+import categories from './categories'
 
-const reducer = combineReducers({user, product})
+const reducer = combineReducers({ user, products, categories })
 
 const store = createStore(
   reducer,
-  applyMiddleware(
-    thunks.withExtraArgument({axios, history}),
-    logger
-  )
+  applyMiddleware(thunks.withExtraArgument({ axios, history }), logger)
 )
 
 export default store

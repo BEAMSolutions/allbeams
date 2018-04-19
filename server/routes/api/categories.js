@@ -15,10 +15,7 @@ router.get('/:categoryId', async (req, res, next) => {
   try {
     const categories = await ProductCategory.findAll({
       where: { categoryId: req.params.categoryId },
-      include: [
-        {model: Category},
-        {model: Product}
-      ]
+      include: [{ model: Category }, { model: Product }]
     })
     res.json(categories)
   } catch (error) {

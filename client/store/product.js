@@ -8,12 +8,14 @@ const initialState = {
 export const getProducts = products => ({ type: GET_PRODUCTS, products })
 //thunk creators
 export const getAllProducts = () => {
-  return async (dispatch, _, {axios}) => {
+  return async (dispatch, _, { axios }) => {
     // TODO: improve the error handling here
     try {
       const { data } = await axios.get('api/products/')
       dispatch(getProducts(data))
-    } catch (err) {console.error(err)}
+    } catch (err) {
+      console.error(err)
+    }
   }
 }
 //reducer
