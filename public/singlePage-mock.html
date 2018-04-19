@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- CSS -->
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+  <title>Single Product</title>
+</head>
+
+<body>
+  <!-- Navbar Section -->
+  <nav class="navbar navbar-default">
+    <div id="logo">
+      <p>Placeholder for img</p>
+      <p>Login</p>
+      <p>Signup</p>
+    </div>
+    <div id="right-section">
+      <p>Account</p>
+      <p>Cart</p>
+    </div>
+  </nav>
+  <!-- Single Product -->
+  <div class="horizontal-flex" id="single-item">
+    <div class="img-container">
+      <img src="./product_placeholder.png" alt="">
+    </div>
+    <div id='item-info'>
+      <h2>Name</h2>
+      <div id='item-reviews'>
+        <p>Reviews (stars)</p>
+        <div>
+          <!-- Stars -->
+          <!-- https://www.w3schools.com/howto/howto_css_user_rating.asp -->
+        </div>
+      </div>
+      <div id='price-cart' class="horizontal-flex">
+        <p>$Price</p>
+        <p>Add to cart</p>
+        <select>
+          <!-- Selection of quantity -->
+          <option value='1'>1</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+          <option value='4'>4</option>
+        </select>
+      </div>
+      <p>Description text</p>
+    </div>
+  </div>
+  <!-- Reviews -->
+  <div class="reviews-container">
+    <h4>Reviews for this product</h4>
+    <p>
+      <a href="#">Write a review</a>
+    </p>
+    <div id="reviews-list">
+      <div class='review'>
+        <div class="horizontal-flex review-title">
+          <p>Title</p>
+          <div>Rating Stars</div>
+          <p>User</p>
+        </div>
+        <p>Review text</p>
+      </div>
+      <div class='review'>
+        <div class="horizontal-flex review-title">
+          <p>Title</p>
+          <div>Rating Stars</div>
+          <p>User</p>
+        </div>
+        <p>Review text</p>
+      </div>
+
+      <div class='review'>
+        <div class="horizontal-flex review-title">
+          <p>Title</p>
+          <div>Rating Stars</div>
+          <p>User</p>
+        </div>
+        <p>Review text</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Section -->
+  <div id="back-to-top">
+    <h3>Back to Top</h3>
+  </div>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-name col-md-4">
+      <h3>All Beams Inc. 2018</h3>
+    </div>
+    <div class="legal col-md-4">
+      <h3>Legal Stuff</h3>
+    </div>
+    <div class="social-m col-md-4">
+      <h3>Follow us on:</h3>
+    </div>
+  </footer>
+</body>
+
+</html>

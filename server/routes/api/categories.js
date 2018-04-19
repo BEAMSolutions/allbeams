@@ -10,3 +10,18 @@ router.get('/', async (req, res, next) => {
     next(error)
   }
 })
+<<<<<<< HEAD
+=======
+
+//TODO fix later
+router.get('/:categoryId', async (req, res, next) => {
+  try {
+    const categories = await ProductCategory.findAll({
+      where: { categoryId: req.params.categoryId }
+    })
+    res.json(categories)
+  } catch (error) {
+    next(error)
+  }
+})
+>>>>>>> master

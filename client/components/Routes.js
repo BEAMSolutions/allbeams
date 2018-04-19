@@ -4,6 +4,7 @@ import { AuthRoute, Login, Signup } from './auth'
 import Welcome from './Welcome'
 import Home from './Home'
 import NoMatch from './NoMatch'
+import SingleProductPage from './SingleProductPage'
 
 const Routes = () => (
   <div className="fill-xy center-xy column">
@@ -11,6 +12,7 @@ const Routes = () => (
       <Route exact path="/" component={Welcome} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
+      <Route path="/:productId" component={SingleProductPage} />
       <AuthRoute path="/home" component={Home} />
       <Route component={NoMatch} />
     </Switch>
