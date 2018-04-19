@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:categoryId/products', async (req, res, next) => {
+router.get('/products', async (req, res, next) => {
   try {
     const category = await Category.findById(req.params.categoryId)
     const products = await category.getProducts()

@@ -9,7 +9,7 @@ const SelectCategoryForm = props => {
         <select onChange={handleChange}>
           <option value="All Products">All Products</option>
           {categories.map(category => (
-            <option value={category.name} key={category.id} id={category.id}>
+            <option value={category.id} key={category.id}>
               {category.name}
             </option>
           ))}

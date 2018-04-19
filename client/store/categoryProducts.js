@@ -14,6 +14,7 @@ export const getCategoryProducts = categoryId => {
   return async (dispatch, _, { axios }) => {
     try {
       const { data } = await axios.get(`api/categories/${categoryId}/products`)
+      console.log(data)
       dispatch(gotCategoryProducts(data))
     } catch (err) {
       console.error(err)

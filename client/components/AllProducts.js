@@ -1,19 +1,22 @@
 import React from 'react'
 import ProductItem from './ProductItem'
 import { connect } from 'react-redux'
-import { getAllProducts } from '../store/product'
+import { getAllProducts, getCategoryProducts } from '../store/product'
 import { getCategories } from '../store/categories'
 import SelectCategoryForm from './SelectCategoryForm'
-import { getCategoryProducts } from '../store/categoryProducts'
 
 const mapStateToProps = state => {
-  return { products: state.products, categories: state.categories, categoryProducts: state.categoryProducts}
+  return {
+    products: state.products,
+    categories: state.categories,
+    categoryProducts: state.categoryProducts
+  }
 }
 const mapDispatchToProps = dispatch => {
   return {
     getAllProducts: () => dispatch(getAllProducts()),
     getCategories: () => dispatch(getCategories()),
-    getCategoryProducts: (categoryId) => dispatch(getCategoryProducts(categoryId))
+    getCategoryProducts: categoryId => dispatch(getCategoryProducts(categoryId))
   }
 }
 
@@ -32,20 +35,20 @@ class AllProducts extends React.Component {
   }
 
   handleChange(event) {
-    let categories = this.props.categories
-    this.setState({
-      category: event.target.value
-    })
-    //loop over this.state.categories
-    for (let i = 0; i < categories.length; i++) {
-      if (categories[i].name === event.target.value) {
-        this.props.getCategoryProducts(categories[i].id)
+    this.setState(
+      {
+        category: event.target.value
+      },
+      () => {
+        this.props.getCategoryProducts(this.state.category)
       }
-    }
+    )
+    //loop over this.state.categories
   }
   render() {
     const products = this.props.products.products // TODO: fix this
     const categories = this.props.categories
+    console.log(this.state.category)
     console.log(categories)
     return (
       <div className="all-products container-fluid">

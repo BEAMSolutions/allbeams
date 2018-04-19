@@ -6,9 +6,8 @@ import history from '../history'
 import user from './user'
 import products from './product'
 import categories from './categories'
-import categoryProducts from './categoryProducts'
 
-const reducer = combineReducers({ user, products, categories, categoryProducts })
+const reducer = combineReducers({ user, products, categories })
 
 const store = createStore(
   reducer,
