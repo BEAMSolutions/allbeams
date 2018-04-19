@@ -15,8 +15,6 @@ const Welcome = () => {
       <AllProducts />
       {/* <!-- Back to Top Section --> */}
       {<BackToTop />}
-      {/* <!-- Footer --> */}
-      <Footer />
     </div>
   )
 }

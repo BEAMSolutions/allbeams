@@ -4,8 +4,6 @@ import { getSingleProduct } from '../store/product'
 import { getUsers } from '../store/users'
 import Review from './Review'
 import { getAllReviews } from '../store/review'
-import Footer from './footer'
-
 
 const mapStateToProps = state => {
   console.log('mapping stateToProps', state)
@@ -70,7 +68,6 @@ class SingleProduct extends React.Component {
           })) : <h3>There are no reviews yet, be the first!</h3>}
           <div />
         </div>
-        <Footer />
       </div>
     )
   }
