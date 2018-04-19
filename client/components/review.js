@@ -4,10 +4,12 @@ const Review = props => {
   const review = props.review
   return (
     <div className="review">
-      <div className="horizontal-flex review-title">
-        <p>{review.title}</p>
-        <div>{review.rating}</div>
-        <p>User</p>
+      <div className="review-title">
+        <div>
+          <p>{review.title}</p>
+          <p>Rating: {review.rating}</p>
+        </div>
+        <p>By: {review.user.email}</p>
       </div>
       <p>{review.body}</p>
     </div>

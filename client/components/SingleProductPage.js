@@ -1,19 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getSingleProduct } from '../store/product'
-import Review from './review'
+import { getUsers } from '../store/users'
+import Review from './Review'
 import { getAllReviews } from '../store/review'
 import Footer from './footer'
 
 
 const mapStateToProps = state => {
   console.log('mapping stateToProps', state)
-  return { product: state.product, reviews: state.reviews }
+  return {
+    product: state.product,
+    reviews: state.reviews,
+    users: state.users
+   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     getSingleProduct: arg => dispatch(getSingleProduct(arg)),
-    getAllReviews: arg => dispatch(getAllReviews(arg))
+    getAllReviews: arg => dispatch(getAllReviews(arg)),
+    getUsers: arg => dispatch(getUsers(arg))
   }
 }
 
@@ -22,6 +28,7 @@ class SingleProduct extends React.Component {
     const id = this.props.match.params.productId
     this.props.getSingleProduct(id)
     this.props.getAllReviews(id)
+    this.props.getUsers()
   }
   render() {
     const product = this.props.product

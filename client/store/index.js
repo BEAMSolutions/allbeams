@@ -7,7 +7,9 @@ import user from './user'
 import product from './product'
 import products from './products'
 import reviews from './review'
-const reducer = combineReducers({user, products, reviews, product})
+import users from './users'
+
+const reducer = combineReducers({users, user, products, reviews, product})
 
 const store = createStore(
   reducer,
