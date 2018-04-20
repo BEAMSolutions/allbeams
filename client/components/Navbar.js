@@ -1,9 +1,9 @@
 import React from 'react'
-import {  Redirect, Link } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { AuthLink, Logout } from './auth'
 import Searchbar from './Searchbar'
 import { getQueryProducts } from '../store/products'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 const mapDispatchToProps = dispatch => {
   return { getQueryProducts: arg => dispatch(getQueryProducts(arg)) }
@@ -12,7 +12,8 @@ class Navbar extends React.Component {
   constructor() {
     super()
     this.state = {
-      query: ''
+      query: '',
+      isQuery: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -22,8 +23,11 @@ class Navbar extends React.Component {
     evt.preventDefault()
     console.log(this.state.query)
     this.props.getQueryProducts(this.state.query)
-    //TODO make the query search
-    //also move the user to local:8080/search/?name=query page
+    this.setState({
+      isQuery: true
+    })
+    // TODO make the query search
+    // also move the user to local:8080/search/?name=query page
   }
 
   handleChange(evt) {
@@ -31,9 +35,12 @@ class Navbar extends React.Component {
       query: evt.target.value
     })
   }
-
+  //TODO KMS FIX THIS LATER
+  //WE WANT THE SEARCH CLASS AS HIGH AS POSSIBLE
   render() {
-    return (
+    return this.state.isQuery ? (
+      <Redirect to="/search" />
+    ) : (
       <nav className="row center-y">
         <Link to="/">
           <img id="logo" src="/favicon.ico" />

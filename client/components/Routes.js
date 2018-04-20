@@ -5,11 +5,13 @@ import Welcome from './Welcome'
 import Home from './Home'
 import NoMatch from './NoMatch'
 import SingleProductPage from './SingleProductPage'
+import SearchPage from './Searchpage'
 
 const Routes = () => (
   <div className="fill-xy center-xy column">
     <Switch>
       <Route exact path="/" component={Welcome} />
+      <Route exact path="/search" component={SearchPage} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
       <Route path="/:productId" component={SingleProductPage} />
