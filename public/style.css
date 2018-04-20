@@ -105,3 +105,47 @@ footer {
 footer .legal {
   text-align: center;
 }
+
+
+/* My Cart */
+.cart {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart .title-head {
+  display: flex;
+  align-items: baseline;
+}
+
+.cart .title-head p {
+  font-size: 1.15rem;
+}
+
+.cart-item {
+  padding: 1.5rem 0;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgray;
+
+}
+
+.cart-item .main {
+  display: flex;
+  justify-content: flex-start
+}
+
+.cart-item-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-img-disp {
+  display: flex;
+}
+
+.cart .delete {
+  width: 100vw;
+  text-align: left;
+  padding-top: 1rem;
+  padding-left: 1rem;
+}
