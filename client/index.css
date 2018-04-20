@@ -46,7 +46,7 @@ nav a:first-child:hover {
 
 .product-item {
   width: 20%;
-  margin: 1rem;
+  margin-top: 1rem;
 }
 
 .product-item img {
@@ -58,7 +58,7 @@ nav a:first-child:hover {
   flex-wrap: wrap;
 }
 .all-products {
-  margin-top: 1.5rem;
+  padding-top: 2rem;
 }
 
 /* Banner */
@@ -72,6 +72,7 @@ nav a:first-child:hover {
 .product-title-bar {
   display: flex;
   justify-content: space-between;
+  margin-top: 3rem;
 }
 
 .form-category {

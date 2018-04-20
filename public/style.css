@@ -16,6 +16,28 @@ h5 {
   font-size: 1.75rem;
 }
 
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar #logo {
+  display: flex;
+}
+
+#logo p {
+  margin-left: 1rem;
+}
+
+.navbar #right-section {
+  display: flex;
+}
+
+#right-section p {
+  margin-left: 1rem;
+}
+
 /* Banner */
 .banner {
   width: 100vw;

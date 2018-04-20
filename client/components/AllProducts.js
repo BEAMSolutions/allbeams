@@ -39,6 +39,7 @@ class AllProducts extends React.Component {
     return (
       <div className="all-products container-fluid">
         <div className="product-title-bar">
+          <h1>Placeholder Title</h1>
           <SelectCategoryForm
             categories={categories}
             handleChange={this.handleChange}
