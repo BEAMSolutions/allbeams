@@ -2,63 +2,26 @@ import React from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import { AuthLink, Logout } from './auth'
 import Searchbar from './Searchbar'
-import { getQueryProducts } from '../store/products'
-import { connect } from 'react-redux'
 
-const mapDispatchToProps = dispatch => {
-  return { getQueryProducts: arg => dispatch(getQueryProducts(arg)) }
-}
-class Navbar extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      query: '',
-      isQuery: false
-    }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleSubmit(evt) {
-    evt.preventDefault()
-    console.log(this.state.query)
-    this.props.getQueryProducts(this.state.query)
-    this.setState({
-      isQuery: true
-    })
-    // TODO make the query search
-    // also move the user to local:8080/search/?name=query page
-  }
-
-  handleChange(evt) {
-    this.setState({
-      query: evt.target.value
-    })
-  }
-  //TODO KMS FIX THIS LATER
-  //WE WANT THE SEARCH CLASS AS HIGH AS POSSIBLE
-  render() {
-    return this.state.isQuery ? (
-      <Redirect to="/search" />
-    ) : (
-      <nav className="row center-y">
-        <Link to="/">
-          <img id="logo" src="/favicon.ico" />
-        </Link>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Signup</Link>
-        <Searchbar
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-          query={this.state.query}
-        />
-        <AuthLink to="/home">Home</AuthLink>
-        <AuthLink to="/">
-          <Logout />
-        </AuthLink>
-      </nav>
-    )
-  }
+const Navbar = (props) => {
+  return (
+    <nav className="row center-y">
+      <Link to="/">
+        <img id="logo" src="/favicon.ico" />
+      </Link>
+      <Link to="/login">Login</Link>
+      <Link to="/signup">Signup</Link>
+      <Searchbar
+        handleSubmit={props.handleSubmit}
+        handleChange={props.handleChange}
+        query={props.query}
+      />
+      <AuthLink to="/home">Home</AuthLink>
+      <AuthLink to="/">
+        <Logout />
+      </AuthLink>
+    </nav>
+  )
 }
 
-export default connect(null, mapDispatchToProps)(Navbar)
+export default Navbar

@@ -1,15 +1,23 @@
 const router = require('express').Router()
 const { Product, Category } = require('../../db')
+const Op = require('sequelize')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
     //TODO filter the products database and return an array with the proper filter
     if (req.query) {
-      console.log(req.query)
-      res.status(200)
-      // const products = await Product.findAll('where {name: like req.query}')
-      // res.json(products)
+      console.log(req.query.name)
+      const products = await Product.findAll({
+        where: {
+          name: 'Licensed Soft Chips'
+          // {
+          //   [Op.like]: `%${req.query.name}`
+          // }
+        }
+      })
+      console.log(products)
+      res.json(products)
     } else {
       const products = await Product.findAll()
       res.json(products)
