@@ -6,7 +6,6 @@ import Review from './Review'
 import { getAllReviews } from '../store/review'
 
 const mapStateToProps = state => {
-  console.log('mapping stateToProps', state)
   return {
     product: state.product,
     reviews: state.reviews,
