@@ -4,8 +4,14 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    const products = await Product.findAll()
-    res.json(products)
+    //TODO filter the products database and return an array with the proper filter
+    if (req.query) {
+      const products = await Product.findAll('where {name: like req.query}')
+      res.json(products)
+    } else {
+      const products = await Product.findAll()
+      res.json(products)
+    }
   } catch (error) {
     next(error)
   }
