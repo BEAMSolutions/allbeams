@@ -1,7 +1,7 @@
 //action types
 
 const GET_PRODUCT = 'GET_PRODUCT'
-//initial state
+
 const initialState = {}
 
 const getProduct = product => ({ type: GET_PRODUCT, product })
