@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getAllProducts, getCategoryProducts } from '../store/products'
+import {
+  getCategoryProducts,
+} from '../store/products'
 import { getCategories } from '../store/categories'
 import RenderProducts from './RenderProducts'
 
@@ -12,34 +14,17 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    getAllProducts: () => dispatch(getAllProducts()),
-    getCategories: () => dispatch(getCategories()),
     getCategoryProducts: categoryId => dispatch(getCategoryProducts(categoryId))
   }
 }
 
-class AllProducts extends React.Component {
+class SearchResults extends React.Component {
   constructor() {
     super()
-    this.state = {
-      filteredProductsId: 0
-    }
     this.handleChange = this.handleChange.bind(this)
   }
-  componentDidMount() {
-    this.props.getAllProducts()
-    this.props.getCategories()
-  }
-
   handleChange(event) {
-    this.setState({
-      filteredProductsId: event.target.value
-    })
-    if (event.target.value !== 'all-products') {
-      this.props.getCategoryProducts(event.target.value)
-    } else {
-      this.props.getAllProducts()
-    }
+    this.props.getCategoryProducts(event.target.value)
   }
   render() {
     return (
@@ -51,4 +36,5 @@ class AllProducts extends React.Component {
     )
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResults)
