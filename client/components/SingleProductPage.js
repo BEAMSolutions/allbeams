@@ -6,6 +6,7 @@ import { getSingleProduct } from '../store/product'
 import { getUsers } from '../store/users'
 import { getAllReviews } from '../store/review'
 import { addToCart } from '../store/cart'
+import { Link } from 'react-router-dom'
 
 const mapStateToProps = state => {
   return {
@@ -13,7 +14,7 @@ const mapStateToProps = state => {
     reviews: state.reviews,
     users: state.users,
     quantityAddedById: state.quantityAddedById
-   }
+  }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -60,7 +61,7 @@ class SingleProduct extends React.Component {
   }
 
   render() {
-    const {product, reviews} = this.props
+    const { product, reviews } = this.props
 
     return (
       <div>
@@ -76,10 +77,14 @@ class SingleProduct extends React.Component {
             </div>
             <div id="price-cart" className="horizontal-flex">
               <h5>${product.price}</h5>
-              <AddToCart handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
+              <AddToCart
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+              />
             </div>
             <p>{product.description}</p>
           </div>
+          <Link to="/cart">Go to cart</Link>
         </div>
         <div className="reviews-container">
           <h4>Reviews for this product</h4>
@@ -87,9 +92,15 @@ class SingleProduct extends React.Component {
             <a href="#">Write a review</a>
           </p>
           <div id="reviews-list" />
-          {reviews.length ? (reviews.map(review => {
-            return <Review review={review} key={review.id} user={review.userId} />
-          })) : <h3>There are no reviews yet, be the first!</h3>}
+          {reviews.length ? (
+            reviews.map(review => {
+              return (
+                <Review review={review} key={review.id} user={review.userId} />
+              )
+            })
+          ) : (
+            <h3>There are no reviews yet, be the first!</h3>
+          )}
           <div />
         </div>
       </div>
