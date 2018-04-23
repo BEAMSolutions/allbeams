@@ -1,30 +1,36 @@
 const router = require('express').Router()
 const { Product, Category } = require('../../db')
-const Op = require('sequelize')
+//I added .op to the end of require sequelize
+const Op = require('sequelize').Op
 module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
     //TODO filter the products database and return an array with the proper filter
-    if (req.query) {
-      console.log(req.query.name)
-      const products = await Product.findAll({
-        where: {
-          name: 'Licensed Soft Chips'
-          // {
-          //   [Op.like]: `%${req.query.name}`
-          // }
-        }
-      })
-      console.log(products)
-      res.json(products)
-    } else {
+     else {
       const products = await Product.findAll()
       res.json(products)
     }
   } catch (error) {
     next(error)
   }
+})
+
+router.get('/search', async (req, res, next) => {
+  try{
+      const products = await Product.findAll({
+        where: {
+          name: {
+            [Op.like]: `%${req.query.name}`
+          }
+        }
+      })
+      console.log(products)
+      res.json(products)
+    }
+    catch(error){
+      next(error)
+    }
 })
 
 router.get('/:productId', async (req, res, next) => {
