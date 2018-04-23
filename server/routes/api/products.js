@@ -6,7 +6,6 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    //TODO filter the products database and return an array with the proper filter
     const products = await Product.findAll()
     res.json(products)
   } catch (error) {
@@ -16,8 +15,6 @@ router.get('/', async (req, res, next) => {
 
 router.get('/search', async (req, res, next) => {
   try {
-    const query = req.query.name.toUpperCase()
-    console.log(query)
     const products = await Product.findAll({
       where: {
         name: {
@@ -27,23 +24,19 @@ router.get('/search', async (req, res, next) => {
     })
     console.log(products)
     res.json(products)
-  } catch (error) {
+  } catch (error) { 
     next(error)
   }
 })
 
 router.get('/:productId', async (req, res, next) => {
   try {
-    const product = await Product.findAll({
+    const product = await Product.find({
       where: { id: req.params.productId },
       include: { all: true }
     })
-    if (product) {
-      //we are returning product[0] so that we only get a single object, instead of an array
-      res.json(product[0])
-    } else {
-      res.status(404)
-    }
+    //we are returning product[0] so that we only get a single object, instead of an array
+    res.json(product)
   } catch (error) {
     next(error)
   }
@@ -51,7 +44,6 @@ router.get('/:productId', async (req, res, next) => {
 
 router.get('/category/:categoryId', async (req, res, next) => {
   try {
-    console.log(req.params.categoryId)
     if (req.params.categoryId === 'All Products') {
       const products = await Product.findAll()
       res.json(products)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getAllProducts, getCategoryProducts } from '../store/products'
+import { getQueryProducts, getCategoryProducts } from '../store/products'
 import { getCategories } from '../store/categories'
 import RenderProducts from './RenderProducts'
 
@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    getAllProducts: () => dispatch(getAllProducts()),
+    getQueryProducts: query => dispatch(getQueryProducts(query)),
     getCategories: () => dispatch(getCategories()),
     getCategoryProducts: categoryId => dispatch(getCategoryProducts(categoryId))
   }
@@ -24,7 +24,7 @@ class AllProducts extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
   componentDidMount() {
-    this.props.getAllProducts()
+    this.props.getQueryProducts()
     this.props.getCategories()
   }
 
