@@ -3,6 +3,7 @@ const GET_PRODUCTS = 'GET_PRODUCTS'
 const GOT_CATEGORY_PRODUCTS = 'GOT_CATEGORY_PRODUCTS'
 const GET_QUERY = 'GET_QUERY'
 //initial state
+// TODO: could be a hash table of products
 const initialState = []
 
 //action creators

@@ -7,7 +7,7 @@ const SelectCategoryForm = props => {
       <label className="dropdown-category">
         <span>Pick your favorite beam category: </span>
         <select onChange={handleChange}>
-          <option value="All Products">All Products</option>
+          <option value="all-products">All Products</option>
           {categories.map(category => (
             <option value={category.id} key={category.id}>
               {category.name}

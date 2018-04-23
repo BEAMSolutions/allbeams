@@ -1,35 +1,64 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Review from './Review'
+import AddToCart from './AddToCart'
 import { getSingleProduct } from '../store/product'
 import { getUsers } from '../store/users'
-import Review from './Review'
 import { getAllReviews } from '../store/review'
+import { addToCart } from '../store/cart'
 
 const mapStateToProps = state => {
   return {
     product: state.product,
     reviews: state.reviews,
-    users: state.users
+    users: state.users,
+    quantityAddedById: state.quantityAddedById
    }
 }
+
 const mapDispatchToProps = dispatch => {
   return {
     getSingleProduct: arg => dispatch(getSingleProduct(arg)),
     getAllReviews: arg => dispatch(getAllReviews(arg)),
-    getUsers: arg => dispatch(getUsers(arg))
+    // TODO: check if this is being used somewhere in this page
+    getUsers: arg => dispatch(getUsers(arg)),
+    addToCart: (product, quantity) => dispatch(addToCart(product, quantity))
   }
 }
 
 class SingleProduct extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      selectedQuant: null
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
   componentDidMount() {
     const id = this.props.match.params.productId
     this.props.getSingleProduct(id)
     this.props.getAllReviews(id)
     this.props.getUsers()
   }
+
+  handleSubmit(event) {
+    const { product } = this.props
+    const { selectedQuant } = this.state
+    event.preventDefault()
+    this.props.addToCart(product, selectedQuant)
+  }
+
+  handleChange(event) {
+    this.setState({
+      selectedQuant: event.target.value
+    })
+  }
+
   render() {
-    const product = this.props.product
-    const reviews = this.props.reviews
+    const {product, reviews} = this.props
+
     return (
       <div>
         <div className="horizontal-flex" id="single-item">
@@ -43,15 +72,8 @@ class SingleProduct extends React.Component {
               <div />
             </div>
             <div id="price-cart" className="horizontal-flex">
-              <p>{product.price}</p>
-              <p>Add to cart</p>
-              <select>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
+              <h5>${product.price}</h5>
+              <AddToCart handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
             </div>
             <p>{product.description}</p>
           </div>

@@ -21,6 +21,9 @@ const mapDispatchToProps = dispatch => {
 class AllProducts extends React.Component {
   constructor() {
     super()
+    this.state = {
+      filteredProductsId: 0
+    }
     this.handleChange = this.handleChange.bind(this)
   }
   componentDidMount() {
@@ -29,7 +32,14 @@ class AllProducts extends React.Component {
   }
 
   handleChange(event) {
-    this.props.getCategoryProducts(event.target.value)
+    this.setState({
+      filteredProductsId: event.target.value
+    })
+    if (event.target.value !== 'all-products') {
+      this.props.getCategoryProducts(event.target.value)
+    } else {
+      this.props.getAllProducts()
+    }
   }
   render() {
     return (
