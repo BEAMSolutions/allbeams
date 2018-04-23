@@ -40,9 +40,9 @@ export const getCategoryProducts = categoryId => {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_PRODUCTS:
-      return  [...state, ...action.products ]
+      return action.products
     case GOT_CATEGORY_PRODUCTS:
-      return [ ...action.categoryProducts ]
+      return action.categoryProducts
     default:
       return state
   }

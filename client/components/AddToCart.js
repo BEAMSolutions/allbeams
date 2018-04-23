@@ -1,13 +1,14 @@
 import React from 'react'
 
 const AddToCart = props => {
-const { handleSubmit } = props
+const { handleSubmit, handleChange } = props
 return (
   <form className="add-to-cart" onSubmit={handleSubmit}>
     <div className="form-group">
       <label>
         <p>Select quantity:</p>
-        <select className="form-control">
+        <select onChange={handleChange} className="form-control">
+          <option value="-">-</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>

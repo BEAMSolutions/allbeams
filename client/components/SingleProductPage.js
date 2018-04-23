@@ -5,15 +5,13 @@ import AddToCart from './AddToCart'
 import { getSingleProduct } from '../store/product'
 import { getUsers } from '../store/users'
 import { getAllReviews } from '../store/review'
-import { getProductForQuant } from '../store/cart-quants'
-import { getProductForId } from '../store/cart-ids'
+import { addToCart } from '../store/cart'
 
 const mapStateToProps = state => {
   return {
     product: state.product,
     reviews: state.reviews,
     users: state.users,
-    addedIds: state.addedIds,
     quantityAddedById: state.quantityAddedById
    }
 }
@@ -23,15 +21,18 @@ const mapDispatchToProps = dispatch => {
     getSingleProduct: arg => dispatch(getSingleProduct(arg)),
     getAllReviews: arg => dispatch(getAllReviews(arg)),
     getUsers: arg => dispatch(getUsers(arg)),
-    getProductForId: arg => dispatch(getProductForId(arg)),
-    getProductForQuant: arg => dispatch(getProductForQuant(arg))
+    addToCart: (product, quantity) => dispatch(addToCart(product, quantity))
   }
 }
 
 class SingleProduct extends React.Component {
   constructor() {
     super()
+    this.state = {
+      selectedQuant: null
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -42,9 +43,20 @@ class SingleProduct extends React.Component {
   }
 
   handleSubmit(event) {
+    const { product } = this.props
+    const { selectedQuant } = this.state
     event.preventDefault()
     console.log('Just submitted, thank you!')
-    console.log('Value: ', event.target.value)
+    console.log('This product: ', product)
+    console.log('Quantity selected: ', selectedQuant)
+    this.props.addToCart(product, selectedQuant)
+  }
+
+  handleChange(event) {
+    console.log(event.target.value)
+    this.setState({
+      selectedQuant: event.target.value
+    })
   }
 
   render() {
@@ -64,7 +76,7 @@ class SingleProduct extends React.Component {
             </div>
             <div id="price-cart" className="horizontal-flex">
               <h5>${product.price}</h5>
-              <AddToCart handleSubmit={this.handleSubmit} />
+              <AddToCart handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
             </div>
             <p>{product.description}</p>
           </div>
