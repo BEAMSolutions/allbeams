@@ -9,8 +9,9 @@ import products from './products'
 import reviews from './review'
 import users from './users'
 import categories from './categories'
+import cart from './cart'
 
-const reducer = combineReducers({users, user, products, reviews, product, categories})
+const reducer = combineReducers({users, user, products, reviews, product, categories, cart})
 
 const store = createStore(
   reducer,

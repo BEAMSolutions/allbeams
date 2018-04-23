@@ -16,7 +16,7 @@ const seed = async () => {
     data.userArray.forEach((user) => {
       arr.push(User.create(user))
     })
-    
+
     data.productArray.forEach((product) => {
       arr.push(Product.create(product))
     })
@@ -24,14 +24,14 @@ const seed = async () => {
     data.orderArray.forEach((order) => {
       arr.push(Order.create(order))
     })
-    
+
     data.categoryArray.forEach((category) => {
       arr.push(Category.create(category))
     })
     data.reviewArray.forEach((review) => {
       arr.push(Review.create(review))
     })
-  
+
     data.productCategoriesArray.forEach((productCategories) => {
       arr.push(ProductCategory.create(productCategories))
     })

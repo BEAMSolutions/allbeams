@@ -5,6 +5,7 @@ const GET_PRODUCT = 'GET_PRODUCT'
 const initialState = {}
 
 const getProduct = product => ({ type: GET_PRODUCT, product })
+
 //thunk creators
 
 export const getSingleProduct = productId => {
