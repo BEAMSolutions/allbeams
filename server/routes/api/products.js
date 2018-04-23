@@ -7,30 +7,29 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     //TODO filter the products database and return an array with the proper filter
-     else {
-      const products = await Product.findAll()
-      res.json(products)
-    }
+    const products = await Product.findAll()
+    res.json(products)
   } catch (error) {
     next(error)
   }
 })
 
 router.get('/search', async (req, res, next) => {
-  try{
-      const products = await Product.findAll({
-        where: {
-          name: {
-            [Op.like]: `%${req.query.name}`
-          }
+  try {
+    const query = req.query.name.toUpperCase()
+    console.log(query)
+    const products = await Product.findAll({
+      where: {
+        name: {
+          [Op.iLike]: `%${req.query.name}%`
         }
-      })
-      console.log(products)
-      res.json(products)
-    }
-    catch(error){
-      next(error)
-    }
+      }
+    })
+    console.log(products)
+    res.json(products)
+  } catch (error) {
+    next(error)
+  }
 })
 
 router.get('/:productId', async (req, res, next) => {

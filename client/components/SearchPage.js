@@ -7,6 +7,7 @@ import Searchbar from './Searchbar'
 const SearchPage = (props) => {
   //TODO KMS FIX THIS LATER
   //WE WANT THE SEARCH CLASS AS HIGH AS POSSIBLE
+
   return (
     <div id="search-page">
       {/* <!-- All Products Section --> */}

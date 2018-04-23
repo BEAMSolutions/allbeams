@@ -14,8 +14,7 @@ const gotCategoryProducts = categoryProducts => ({
 })
 
 const getQuery = query => ({ type: GET_QUERY, query })
-//TODO get query is exactly the same as gotcategoryproducts
-//thunk creators
+
 export const getAllProducts = () => {
   return async (dispatch, _, { axios }) => {
     try {
@@ -38,10 +37,9 @@ export const getCategoryProducts = categoryId => {
   }
 }
 export const getQueryProducts = query => {
-  //TODO make an api request, and filter the products to return an array of products whose names match the query
   return async (dispatch, _, { axios }) => {
     try {
-      const { data } = await axios.get(`api/products/`, {params: {name: query}})
+      const { data } = await axios.get(`api/products/search`, {params: {name: query}})
       dispatch(getQuery(data))
     } catch (err) {
       console.error(err)
@@ -52,9 +50,11 @@ export const getQueryProducts = query => {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_PRODUCTS:
-      return [...state, ...action.products]
+      return [...action.products]
     case GOT_CATEGORY_PRODUCTS:
       return [...action.categoryProducts]
+    case GET_QUERY:
+      return [...action.query]
     default:
       return state
   }

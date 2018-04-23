@@ -23,12 +23,12 @@ class Main extends React.Component {
   handleSubmit(evt) {
     evt.preventDefault()
     console.log(this.state.query)
-    this.props.getQueryProducts(this.state.query)
-    this.setState({
-      isQuery: true
-    }, () => {
-      window.location.replace("search");
-    })
+    this.props.getQueryProducts(this.state.query).then(products => {console.log(products)})
+    // this.setState({
+    //   isQuery: true
+    // }, () => {
+    //   window.location.replace("search");
+    // })
     // TODO make the query search
     // also move the user to local:8080/search/?name=query page
   }
