@@ -20,6 +20,7 @@ const mapDispatchToProps = dispatch => {
   return {
     getSingleProduct: arg => dispatch(getSingleProduct(arg)),
     getAllReviews: arg => dispatch(getAllReviews(arg)),
+    // TODO: check if this is being used somewhere in this page
     getUsers: arg => dispatch(getUsers(arg)),
     addToCart: (product, quantity) => dispatch(addToCart(product, quantity))
   }

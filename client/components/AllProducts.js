@@ -36,8 +36,10 @@ class AllProducts extends React.Component {
     this.setState({
       filteredProductsId: event.target.value
     })
-    if (Number.isInteger(event.target.value)) {
+    if (event.target.value !== 'all-products') {
       this.props.getCategoryProducts(event.target.value)
+    } else {
+      this.props.getAllProducts()
     }
   }
   render() {
