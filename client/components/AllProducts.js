@@ -33,27 +33,31 @@ class AllProducts extends React.Component {
   }
 
   handleChange(event) {
-    this.props.getCategoryProducts(event.target.value)
     this.setState({
       filteredProductsId: event.target.value
     })
+    if (Number.isInteger(event.target.value)) {
+      this.props.getCategoryProducts(event.target.value)
+    }
   }
   render() {
     const {products, categories} = this.props
       const getCategoryTitle = (id) => {
-        const numId = +id
-        if (numId === 0) {
+          let numId = id
+        if (numId === 'all-products') {
           return 'All Products'
         } else {
+          numId = +id
           return this.props.categories.filter(category => category.id === numId).map(category => category.name)
         }
       }
+    let filteredProductsId = this.state.filteredProductsId
     const categoryTitle = getCategoryTitle(this.state.filteredProductsId)
     console.log(this.props)
     return (
       <div className="all-products container-fluid">
         <div className="product-title-bar">
-          <h1>{categoryTitle}</h1>
+          <h1>{filteredProductsId ? categoryTitle : 'All Products'}</h1>
           <SelectCategoryForm
             categories={categories}
             handleChange={this.handleChange}
