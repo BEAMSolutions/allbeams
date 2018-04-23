@@ -21,7 +21,7 @@ router.get('/:orderId', async (req, res, next) => {
 })
 
 router.put('/:orderId', (req, res, next) => {
-  //TODO used to change the status of an order
+  // TODO: used to change the status of an order
   try {
     const status = res.status
     res.json(status)
