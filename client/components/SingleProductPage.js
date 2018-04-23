@@ -3,10 +3,9 @@ import { connect } from 'react-redux'
 import Review from './Review'
 import AddToCart from './AddToCart'
 import { getSingleProduct } from '../store/product'
-import { getUsers } from '../store/users'
+// import { getUsers } from '../store/users'
 import { getAllReviews } from '../store/review'
 import { addToCart } from '../store/cart'
-import { Link } from 'react-router-dom'
 
 const mapStateToProps = state => {
   return {
@@ -21,7 +20,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getSingleProduct: arg => dispatch(getSingleProduct(arg)),
     getAllReviews: arg => dispatch(getAllReviews(arg)),
-    getUsers: arg => dispatch(getUsers(arg)),
+    // FIXME: what is dispatching GET_USERS?
+    // getUsers: arg => dispatch(getUsers(arg)),
     addToCart: (product, quantity) => dispatch(addToCart(product, quantity))
   }
 }
@@ -40,7 +40,7 @@ class SingleProduct extends React.Component {
     const id = this.props.match.params.productId
     this.props.getSingleProduct(id)
     this.props.getAllReviews(id)
-    this.props.getUsers()
+    // this.props.getUsers()
   }
 
   handleSubmit(event) {
@@ -54,7 +54,6 @@ class SingleProduct extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value)
     this.setState({
       selectedQuant: event.target.value
     })
@@ -84,7 +83,6 @@ class SingleProduct extends React.Component {
             </div>
             <p>{product.description}</p>
           </div>
-          <Link to="/cart">Go to cart</Link>
         </div>
         <div className="reviews-container">
           <h4>Reviews for this product</h4>

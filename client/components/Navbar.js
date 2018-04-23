@@ -27,12 +27,17 @@ class Navbar extends React.Component {
   render() {
     return (
       <nav className="row center-y">
-        <Link to="/">
-          <img id="logo" src="/favicon.ico" />
-        </Link>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Signup</Link>
-        {/* <Searchbar handleSubmit={this.handleSubmit} handleChange={this.handleChange} query={this.state.query} /> */}
+        <div className="left-side">
+          <Link to="/">
+            <img id="logo" src="/favicon.ico" />
+          </Link>
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Signup</Link>
+        </div>
+        <div className="right-side">
+          <Link className="go-to-cart" to="/cart">Go to cart</Link>
+          {/* <Searchbar handleSubmit={this.handleSubmit} handleChange={this.handleChange} query={this.state.query} /> */}
+        </div>
         <AuthLink to="/home">Home</AuthLink>
         <AuthLink to="/">
           <Logout />

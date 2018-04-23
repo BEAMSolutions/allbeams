@@ -8,7 +8,6 @@ const mapStateToProps = state => ({
 
 class Cart extends React.Component {
   render() {
-    // console.log(this.props.cart)
     const { cart } = this.props
     return (
       <div className="cart">
@@ -17,7 +16,7 @@ class Cart extends React.Component {
           <p className="cart-head col-md-3">Price</p>
           <p className="cart-head col-md-3">Quantity</p>
         </div>
-        <CartBody />
+        <CartBody cart={cart} />
       </div>
     )
   }
