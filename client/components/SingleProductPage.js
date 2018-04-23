@@ -46,14 +46,10 @@ class SingleProduct extends React.Component {
     const { product } = this.props
     const { selectedQuant } = this.state
     event.preventDefault()
-    console.log('Just submitted, thank you!')
-    console.log('This product: ', product)
-    console.log('Quantity selected: ', selectedQuant)
     this.props.addToCart(product, selectedQuant)
   }
 
   handleChange(event) {
-    console.log(event.target.value)
     this.setState({
       selectedQuant: event.target.value
     })
