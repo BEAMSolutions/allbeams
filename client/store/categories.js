@@ -25,7 +25,7 @@ export const getCategories = () => {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GOT_CATEGORIES:
-      return [...state, ...action.categories]
+      return [...action.categories]
     default:
       return state
   }

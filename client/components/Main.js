@@ -4,8 +4,11 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import { getQueryProducts } from '../store/products'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 
+const mapStateToProps = state => {
+  return { products: state.products }
+}
 const mapDispatchToProps = dispatch => {
   return { getQueryProducts: arg => dispatch(getQueryProducts(arg)) }
 }
@@ -14,8 +17,7 @@ class Main extends React.Component {
   constructor() {
     super()
     this.state = {
-      query: '',
-      isQuery: false
+      query: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -23,18 +25,9 @@ class Main extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault()
-    console.log(this.state.query)
-    this.props.getQueryProducts(this.state.query)
-    // .then(
-    //   () => {
-    //   //window.location.replace("search");
-    // })
-    // this.setState({
-    //   isQuery: true
-    // }, () => {
-    // })
-    // TODO make the query search
-    // also move the user to local:8080/search/?name=query page
+    this.props
+      .getQueryProducts(this.state.query)
+      .then(() => this.props.history.push('search'))
   }
 
   handleChange(evt) {
@@ -43,10 +36,14 @@ class Main extends React.Component {
     })
   }
 
-  render () {
+  render() {
     return (
       <div id="main" className="fill-xy column">
-        <Navbar handleChange={this.handleChange} handleSubmit={this.handleSubmit} query={this.state.query} />
+        <Navbar
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          query={this.state.query}
+        />
         <Routes />
         <Footer />
       </div>
@@ -54,4 +51,4 @@ class Main extends React.Component {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(Main))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main))
