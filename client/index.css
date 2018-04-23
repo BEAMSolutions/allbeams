@@ -1,11 +1,23 @@
 /* App */
 
 #app {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 16px;
+}
+
+/* Font Sizes */
+
+h1 {
+  font-size: 2.5rem;
+}
+h3 {
+  font-size: 2rem;
+}
+h5 {
+  font-size: 1.75rem;
 }
 
 /* Navbar */
@@ -44,6 +56,12 @@ nav a:first-child:hover {
 
 /* Welcome Section */
 
+#welcome {
+  width: 100vw;
+  align-items: center;
+  margin: 0;
+}
+
 .product-item {
   width: 20%;
   margin-top: 1rem;
@@ -58,12 +76,21 @@ nav a:first-child:hover {
   flex-wrap: wrap;
 }
 .all-products {
-  padding-top: 2rem;
+  padding-top: 1rem;
 }
 
 /* Banner */
+.jumbotron {
+  background-color: white;
+  margin-bottom: 0;
+}
 
-.container img {
+
+.jumbotron .container {
+  width: 100vw;
+}
+
+.jumbotron img {
   width: 100%;
   height: auto;
 }
@@ -72,7 +99,7 @@ nav a:first-child:hover {
 .product-title-bar {
   display: flex;
   justify-content: space-between;
-  margin-top: 3rem;
+  margin-top: 0;
 }
 
 .form-category {
@@ -103,6 +130,42 @@ nav a:first-child:hover {
   margin-left: 1rem;
 }
 
+#price-cart {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add To Cart */
+.add-to-cart select {
+  width: 40px;
+}
+
+.add-to-cart button {
+  margin-left: 1rem;
+  width: 100px;
+  text-align: center;
+}
+
+.add-to-cart .form-group {
+  display: flex;
+}
+
+.add-to-cart label {
+  width: 100%;
+  display: flex;
+  margin-top: 2rem;
+}
+
+.add-to-cart p {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.add-to-cart .form-control {
+  width: 60px;
+  margin-left: 1rem;
+}
+
 /* Back to Top Section */
 #back-to-top {
   text-align: center;
@@ -115,6 +178,48 @@ nav a:first-child:hover {
   background-color: lightgray;
 }
 
+* My Cart */
+.cart {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart .title-head {
+  display: flex;
+  align-items: baseline;
+}
+
+.cart .title-head p {
+  font-size: 1.75rem;
+}
+
+.cart-item {
+  padding: 1.5rem 0;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgray;
+
+}
+
+.cart-item .main {
+  display: flex;
+  justify-content: flex-start
+}
+
+.cart-item-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-img-disp {
+  display: flex;
+}
+
+.cart .delete {
+  width: 100vw;
+  text-align: left;
+  padding-top: 1rem;
+  padding-left: 1rem;
+}
 
 /* Back to Top */
 #back-to-top {

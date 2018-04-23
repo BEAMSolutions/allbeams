@@ -32,7 +32,7 @@ class Navbar extends React.Component {
         </Link>
         <Link to="/login">Login</Link>
         <Link to="/signup">Signup</Link>
-        <Searchbar handleSubmit={this.handleSubmit} handleChange={this.handleChange} query={this.state.query} />
+        {/* <Searchbar handleSubmit={this.handleSubmit} handleChange={this.handleChange} query={this.state.query} /> */}
         <AuthLink to="/home">Home</AuthLink>
         <AuthLink to="/">
           <Logout />

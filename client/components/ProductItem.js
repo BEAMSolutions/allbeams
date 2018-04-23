@@ -1,9 +1,12 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const ProductItem = props => {
   const product = props.product
   return (
-    <Link to={`${product.id}`} className="product-item col-md-6">
+    <Link
+      to={`${product.id}`}
+      className="product-item col-xs-6 col-sm-12 col-md-4 col-lg-3"
+    >
       <div id="img-container">
         <img src={product.imageUrl} alt="" />
       </div>

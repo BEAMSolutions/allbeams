@@ -1,35 +1,55 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Review from './Review'
+import AddToCart from './AddToCart'
 import { getSingleProduct } from '../store/product'
 import { getUsers } from '../store/users'
-import Review from './Review'
 import { getAllReviews } from '../store/review'
+import { getProductForQuant } from '../store/cart-quants'
+import { getProductForId } from '../store/cart-ids'
 
 const mapStateToProps = state => {
   return {
     product: state.product,
     reviews: state.reviews,
-    users: state.users
+    users: state.users,
+    addedIds: state.addedIds,
+    quantityAddedById: state.quantityAddedById
    }
 }
+
 const mapDispatchToProps = dispatch => {
   return {
     getSingleProduct: arg => dispatch(getSingleProduct(arg)),
     getAllReviews: arg => dispatch(getAllReviews(arg)),
-    getUsers: arg => dispatch(getUsers(arg))
+    getUsers: arg => dispatch(getUsers(arg)),
+    getProductForId: arg => dispatch(getProductForId(arg)),
+    getProductForQuant: arg => dispatch(getProductForQuant(arg))
   }
 }
 
 class SingleProduct extends React.Component {
+  constructor() {
+    super()
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
   componentDidMount() {
     const id = this.props.match.params.productId
     this.props.getSingleProduct(id)
     this.props.getAllReviews(id)
     this.props.getUsers()
   }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    console.log('Just submitted, thank you!')
+    console.log('Value: ', event.target.value)
+  }
+
   render() {
-    const product = this.props.product
-    const reviews = this.props.reviews
+    const {product, reviews} = this.props
+
     return (
       <div>
         <div className="horizontal-flex" id="single-item">
@@ -43,15 +63,8 @@ class SingleProduct extends React.Component {
               <div />
             </div>
             <div id="price-cart" className="horizontal-flex">
-              <p>{product.price}</p>
-              <p>Add to cart</p>
-              <select>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
+              <h5>${product.price}</h5>
+              <AddToCart handleSubmit={this.handleSubmit} />
             </div>
             <p>{product.description}</p>
           </div>
