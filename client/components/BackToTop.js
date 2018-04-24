@@ -1,8 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const BackToTop = () => (
   <div>
-    <h3 id="back-to-top">Back to Top</h3>
+    <h3 id="back-to-top">
+      <a href="#navbar">
+        Back to Top
+      </a>
+    </h3>
   </div>
 )
 

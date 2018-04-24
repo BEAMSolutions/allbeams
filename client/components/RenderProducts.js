@@ -7,8 +7,9 @@ const RenderProducts = (props) => {
   const categories = props.categories
     return (
       <div className="all-products container-fluid">
-        <div className="product-title-bar">
+        <div className="form-bar">
           <SelectCategoryForm
+            className="filter-by-cat-dropdown"
             categories={categories}
             handleChange={props.handleChange}
           />

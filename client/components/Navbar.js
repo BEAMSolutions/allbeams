@@ -5,7 +5,7 @@ import Searchbar from './Searchbar'
 
 const Navbar = (props) => {
   return (
-    <nav className="row center-y">
+    <nav id="navbar" className="row center-y">
        <div className="left-side">
           <Link to="/">
             <img id="logo" src="/favicon.ico" />
@@ -13,14 +13,14 @@ const Navbar = (props) => {
           <Link to="/login">Login</Link>
           <Link to="/signup">Signup</Link>
         </div>
-        <div className="right-side">
+        <div className="right-side col-md-6">
           <Searchbar
             handleSubmit={props.handleSubmit}
             handleChange={props.handleChange}
             query={props.query}
           />
           <Link className="go-to-cart" to="/cart">Go to cart</Link>
-          
+
         </div>
         <AuthLink to="/home">Home</AuthLink>
         <AuthLink to="/">

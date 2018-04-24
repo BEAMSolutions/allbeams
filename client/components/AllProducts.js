@@ -42,12 +42,31 @@ class AllProducts extends React.Component {
     }
   }
   render() {
+    const { products, categories } = this.props
+    const getCategoryTitle = id => {
+      let numId = id
+      if (numId === 'all-products') {
+        return 'All Products'
+      } else {
+        numId = +id
+        return this.props.categories
+          .filter(category => category.id === numId)
+          .map(category => category.name)
+      }
+    }
+    let filteredProductsId = this.state.filteredProductsId
+    const categoryTitle = getCategoryTitle(this.state.filteredProductsId)
     return (
-      <RenderProducts
-        handleChange={this.handleChange}
-        products={this.props.products}
-        categories={this.props.categories}
-      />
+      <div className="all-products container-fluid">
+        <div className="product-title-bar">
+          <h1>{filteredProductsId ? categoryTitle : 'All Products'}</h1>
+        </div>
+        <RenderProducts
+          handleChange={this.handleChange}
+          products={this.props.products}
+          categories={this.props.categories}
+        />
+      </div>
     )
   }
 }

@@ -10,7 +10,6 @@ const SearchPage = props => {
       {/* <!-- All Products Section --> */}
       <SearchResults query={props.query} />
       {/* <!-- Back to Top Section --> */}
-      <h3 id="back-to-top">THIS IS THE SEARCH PAGE</h3>
       {/* <!-- Footer --> */}
     </div>
   )

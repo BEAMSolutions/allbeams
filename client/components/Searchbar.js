@@ -3,14 +3,15 @@ import React from 'react'
 const Searchbar = props => {
   const {handleSubmit, query, handleChange} = props
   return (
-    <div>
+    <div className="searchbar">
       <form onSubmit={(event) => handleSubmit(event)}>
-        Search:<input
+        <label>Search:</label>
+        <input
           type="text"
           name="query"
           value={query}
           onChange={handleChange} />
-        <input type="submit" value="Submit" />
+        <button className="btn btn-primary" type="submit" value="Submit">Submit</button>
       </form>
     </div>
   )
