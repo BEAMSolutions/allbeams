@@ -251,6 +251,11 @@ nav a:first-child:hover {
   display: flex;
 }
 
+.cart-product-name {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .cart .delete {
   width: 100vw;
   text-align: left;
