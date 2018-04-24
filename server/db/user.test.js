@@ -1,31 +1,61 @@
 /* eslint-env mocha,chai */
 
-const {expect} = require('chai')
-const {db, User} = require('./index')
+const  chai = require('chai')
+const expect = chai.expect
+const { db, Product } = require('./index')
+// const chaiProperties = require('chai-properties')
+// const chaiThings = require('chai-things')
+// chai.use(chaiProperties)
+// chai.use(chaiThings)
 
-describe('User model', () => {
+describe('Product model', () => {
   beforeEach(() => {
-    return db.sync({force: true})
+    return db.sync({ force: true })
   })
 
   describe('instanceMethods', () => {
-    describe('correctPassword', () => {
-      let cody
+    describe('Model structure', () => {
+      let testProduct
 
       beforeEach(async () => {
-        cody = await User.create({
-          email: 'cody@puppybook.com',
-          password: 'bones'
+        testProduct = await Product.create({
+          name: 'testName',
+          price: 100,
+          description: 'testDescription',
+          inventory: 33
         })
       })
 
-      it('returns true if the password is correct', () => {
-        expect(cody.correctPassword('bones')).to.be.equal(true)
+      it('returns true if name is correct', () => {
+        expect(testProduct.name).to.be.equal('testName')
       })
 
-      it('returns false if the password is incorrect', () => {
-        expect(cody.correctPassword('bonez')).to.be.equal(false)
+      it('return true if the price is correct', () => {
+        expect(testProduct.price).to.be.equal(100)
+      })
+      it('return true if the description is correct', () => {
+        expect(testProduct.description).to.be.equal('testDescription')
+      })
+      it('return true if the inventory is correct', () => {
+        expect(testProduct.inventory).to.be.equal(33)
       })
     }) // end describe('correctPassword')
+    // describe('Testing for validation', () => {
+    //   it('requires a name', () => {
+    //     const product = Product.build()
+    //     return product
+    //       .validate()
+    //       .then(() => {
+    //         throw new Error('Promise should have rejected')
+    //       })
+    //       .catch(err => {
+    //         expect(err).to.be.an('error')
+    //         expect(err.errors).to.contain.a.thing.with.properties({
+    //           path: 'body',
+    //           type: 'notNull Violation'
+    //         })
+    //       })
+    //   })
+    // })
   }) // end describe('instanceMethods')
 }) // end describe('User model')

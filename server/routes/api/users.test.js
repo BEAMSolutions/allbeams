@@ -1,34 +1,33 @@
-/* eslint-env mocha,chai */
-
 const {expect} = require('chai')
 const request = require('supertest')
-const {db, User} = require('../../db')
+const {db, Product} = require('../../db')
 const app = require('../../app')
 
-describe('User routes', () => {
+describe('Product Routes', () => {
   beforeEach(async () => {
     await db.sync({force: true})
   })
-
-  describe('/api/users/', () => {
-    const codysEmail = 'cody@puppybook.com'
-    const codysPwd = '123'
-
+  describe('/api/products/', () => {
+    const testName = 'testProduct'
+    const testPrice = 100
+    const testDescription = 'longstring'
+    const testInventory = 10
     beforeEach(async () => {
-      await User.create({
-        email: codysEmail,
-        password: codysPwd
+      await Product.create({
+        name: testName,
+        price: testPrice,
+        description: testDescription,
+        inventory: testInventory
       })
     })
-
-    it('GET /api/users', async () => {
+    it('GET /api/products', async () => {
       await request(app)
-        .get('/api/users')
-        .expect(200)
-        .then(res => {
-          expect(res.body).to.be.an('array')
-          expect(res.body[0].email).to.be.equal(codysEmail)
-        })
+      .get('/api/products')
+      .expect(200)
+      .then(res => {
+        expect(res.body).to.be.an('array')
+        expect(res.body[0].name).to.be.equal(testName)
+      })
     })
-  }) // end describe('/api/users')
-}) // end describe('User routes')
+  })
+})
