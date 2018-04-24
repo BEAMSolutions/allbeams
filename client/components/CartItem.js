@@ -7,7 +7,7 @@ const CartItem = props => {
     <div className="main">
       <div className="cart-img-disp col-md-6">
         <img src={item.product.imageUrl} alt="" />
-        <h5 className="col-md-8">{item.product.name}</h5>
+        <h5 className="cart-product-name col-md-8">{item.product.name}</h5>
       </div>
       <div className="cart-item-price col-md-3">
         <p>${item.product.price}</p>
