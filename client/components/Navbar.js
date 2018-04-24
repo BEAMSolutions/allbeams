@@ -3,31 +3,10 @@ import { Redirect, Link } from 'react-router-dom'
 import { AuthLink, Logout } from './auth'
 import Searchbar from './Searchbar'
 
-class Navbar extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      query: 'something'
-    }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleSubmit(evt) {
-    evt.preventDefault()
-    console.log(evt.target.query.value)
-  }
-
-  handleChange(evt) {
-    this.setState({
-      query: evt.target.value
-    })
-  }
-
-  render() {
-    return (
-      <nav className="row center-y">
-        <div className="left-side">
+const Navbar = (props) => {
+  return (
+    <nav className="row center-y">
+       <div className="left-side">
           <Link to="/">
             <img id="logo" src="/favicon.ico" />
           </Link>
@@ -35,16 +14,20 @@ class Navbar extends React.Component {
           <Link to="/signup">Signup</Link>
         </div>
         <div className="right-side">
+          <Searchbar
+            handleSubmit={props.handleSubmit}
+            handleChange={props.handleChange}
+            query={props.query}
+          />
           <Link className="go-to-cart" to="/cart">Go to cart</Link>
-          {/* <Searchbar handleSubmit={this.handleSubmit} handleChange={this.handleChange} query={this.state.query} /> */}
+          
         </div>
         <AuthLink to="/home">Home</AuthLink>
         <AuthLink to="/">
           <Logout />
         </AuthLink>
-      </nav>
-    )
-  }
+    </nav>
+  )
 }
 
 export default Navbar

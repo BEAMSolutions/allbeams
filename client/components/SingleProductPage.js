@@ -20,8 +20,10 @@ const mapDispatchToProps = dispatch => {
   return {
     getSingleProduct: arg => dispatch(getSingleProduct(arg)),
     getAllReviews: arg => dispatch(getAllReviews(arg)),
+
     // FIXME: what is dispatching GET_USERS?
     // getUsers: arg => dispatch(getUsers(arg)),
+
     addToCart: (product, quantity) => dispatch(addToCart(product, quantity))
   }
 }
@@ -47,9 +49,6 @@ class SingleProduct extends React.Component {
     const { product } = this.props
     const { selectedQuant } = this.state
     event.preventDefault()
-    console.log('Just submitted, thank you!')
-    console.log('This product: ', product)
-    console.log('Quantity selected: ', selectedQuant)
     this.props.addToCart(product, selectedQuant)
   }
 

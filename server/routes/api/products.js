@@ -1,5 +1,7 @@
 const router = require('express').Router()
 const { Product, Category } = require('../../db')
+//I added .op to the end of require sequelize
+const Op = require('sequelize').Op
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -11,18 +13,30 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/search', async (req, res, next) => {
+  try {
+    const products = await Product.findAll({
+      where: {
+        name: {
+          [Op.iLike]: `%${req.query.name}%`
+        }
+      }
+    })
+    console.log(products)
+    res.json(products)
+  } catch (error) { 
+    next(error)
+  }
+})
+
 router.get('/:productId', async (req, res, next) => {
   try {
-    const product = await Product.findAll({
+    const product = await Product.find({
       where: { id: req.params.productId },
       include: { all: true }
     })
-    if (product) {
-      //we are returning product[0] so that we only get a single object, instead of an array
-      res.json(product[0])
-    } else {
-      res.status(404)
-    }
+    //we are returning product[0] so that we only get a single object, instead of an array
+    res.json(product)
   } catch (error) {
     next(error)
   }
@@ -30,7 +44,6 @@ router.get('/:productId', async (req, res, next) => {
 
 router.get('/category/:categoryId', async (req, res, next) => {
   try {
-    console.log(req.params.categoryId)
     if (req.params.categoryId === 'All Products') {
       const products = await Product.findAll()
       res.json(products)

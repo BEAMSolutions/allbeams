@@ -1,18 +1,17 @@
 import React from 'react'
-import AllProducts from './AllProducts'
-import Footer from './Footer'
-import { Link } from 'react-router-dom'
+import SearchResults from './SearchResults'
 
+const SearchPage = props => {
+  //TODO KMS FIX THIS LATER
+  //WE WANT THE SEARCH CLASS AS HIGH AS POSSIBLE
 
-const SearchPage = () => {
   return (
     <div id="search-page">
       {/* <!-- All Products Section --> */}
-      <AllProducts />
+      <SearchResults query={props.query} />
       {/* <!-- Back to Top Section --> */}
-      <h3 id="back-to-top">Back to Top</h3>
+      <h3 id="back-to-top">THIS IS THE SEARCH PAGE</h3>
       {/* <!-- Footer --> */}
-      <Footer />
     </div>
   )
 }
