@@ -21,7 +21,7 @@ return (
           <option value="10">10</option>
         </select>
         <button className="btn btn-primary" type="submit">
-          Add
+          Add to Cart
         </button>
       </label>
     </div>

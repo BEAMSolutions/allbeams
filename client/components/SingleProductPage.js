@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Review from './Review'
 import AddToCart from './AddToCart'
 import { getSingleProduct } from '../store/product'
-import { getUsers } from '../store/users'
+// import { getUsers } from '../store/users'
 import { getAllReviews } from '../store/review'
 import { addToCart } from '../store/cart'
 
@@ -13,15 +13,17 @@ const mapStateToProps = state => {
     reviews: state.reviews,
     users: state.users,
     quantityAddedById: state.quantityAddedById
-   }
+  }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     getSingleProduct: arg => dispatch(getSingleProduct(arg)),
     getAllReviews: arg => dispatch(getAllReviews(arg)),
-    // TODO: check if this is being used somewhere in this page
-    getUsers: arg => dispatch(getUsers(arg)),
+
+    // FIXME: what is dispatching GET_USERS?
+    // getUsers: arg => dispatch(getUsers(arg)),
+
     addToCart: (product, quantity) => dispatch(addToCart(product, quantity))
   }
 }
@@ -40,7 +42,7 @@ class SingleProduct extends React.Component {
     const id = this.props.match.params.productId
     this.props.getSingleProduct(id)
     this.props.getAllReviews(id)
-    this.props.getUsers()
+    // this.props.getUsers()
   }
 
   handleSubmit(event) {
@@ -57,7 +59,7 @@ class SingleProduct extends React.Component {
   }
 
   render() {
-    const {product, reviews} = this.props
+    const { product, reviews } = this.props
 
     return (
       <div>
@@ -73,7 +75,10 @@ class SingleProduct extends React.Component {
             </div>
             <div id="price-cart" className="horizontal-flex">
               <h5>${product.price}</h5>
-              <AddToCart handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
+              <AddToCart
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+              />
             </div>
             <p>{product.description}</p>
           </div>
@@ -84,9 +89,15 @@ class SingleProduct extends React.Component {
             <a href="#">Write a review</a>
           </p>
           <div id="reviews-list" />
-          {reviews.length ? (reviews.map(review => {
-            return <Review review={review} key={review.id} user={review.userId} />
-          })) : <h3>There are no reviews yet, be the first!</h3>}
+          {reviews.length ? (
+            reviews.map(review => {
+              return (
+                <Review review={review} key={review.id} user={review.userId} />
+              )
+            })
+          ) : (
+            <h3>There are no reviews yet, be the first!</h3>
+          )}
           <div />
         </div>
       </div>

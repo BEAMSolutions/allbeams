@@ -24,10 +24,14 @@ h5 {
 
 nav {
   height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 nav a {
-  margin: 0 1em;
+  margin: 1em 1em;
+  padding: 0 1em;
 }
 
 form {
@@ -52,6 +56,7 @@ nav a:first-child:hover {
   height: 40px;
   width: 40px;
   border-radius: 50%;
+  margin-left: 1em;
 }
 
 /* Welcome Section */
