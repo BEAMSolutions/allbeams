@@ -234,6 +234,7 @@ nav a:first-child:hover {
   padding: 1.5rem 0;
   border-top: 1px solid lightgrey;
   border-bottom: 1px solid lightgray;
+  max-height: 15rem;
 
 }
 
@@ -251,6 +252,10 @@ nav a:first-child:hover {
   display: flex;
 }
 
+.cart-img {
+  max-height: 10rem;
+}
+
 .cart-product-name {
   display: flex;
   flex-wrap: wrap;
@@ -261,6 +266,11 @@ nav a:first-child:hover {
   text-align: left;
   padding-top: 1rem;
   padding-left: 1rem;
+}
+
+.subtotal {
+  text-align: right;
+  padding-right: 2rem;
 }
 
 /* Back to Top */

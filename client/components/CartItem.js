@@ -1,13 +1,13 @@
 import React from 'react'
 
 const CartItem = props => {
-  const { item } = props
+  const { item, handleSubmit } = props
   return (
   <div className="cart-item">
     <div className="main">
       <div className="cart-img-disp col-md-6">
-        <img src={item.product.imageUrl} alt="" />
-        <h5 className="cart-product-name col-md-8">{item.product.name}</h5>
+        <img className="cart-img col-md-6" src={item.product.imageUrl} alt="" />
+        <h5 className="cart-product-name col-md-6">{item.product.name}</h5>
       </div>
       <div className="cart-item-price col-md-3">
         <p>${item.product.price}</p>
@@ -32,9 +32,9 @@ const CartItem = props => {
         </form>
       </div>
     </div>
-    <div className="delete">
+    <form onSubmit={(evt) => handleSubmit(evt)} className="delete">
       <button type="submit">Delete</button>
-    </div>
+    </form>
   </div>
   )
 }
